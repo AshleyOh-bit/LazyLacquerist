@@ -17,8 +17,11 @@ export const Collection = ({ collection }) => {
   })
 
   return (
-    <section className="polish-display">
-      {cards}
+    <section className="collection">
+      <button className="polish-button">Add a polish</button>
+      <section className="polish-display">
+        {cards}
+      </section>
     </section>
   )
 }

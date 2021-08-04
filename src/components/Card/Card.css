@@ -1,11 +1,12 @@
 .card {
-  border: 1px solid black;
-  border-radius: 5%;
+  border: 1px solid #f85f60;
+  border-radius: 3em;
   padding: 2%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 75%
+  height: 60%;
+  background-color: white;
 }
 
 .polish-image {
@@ -33,7 +34,7 @@
   height: 2vh;
   width: 2vh;
   border-radius: 50%;
-  margin-left: 2em;
+  margin-left: 2vh;
 }
 
 img {
@@ -41,4 +42,5 @@ img {
   width: auto;
   overflow: hidden;
   object-fit: cover;
+  border-radius: 3em;
 }

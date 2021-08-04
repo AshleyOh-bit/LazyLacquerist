@@ -27,7 +27,7 @@ class App extends React.Component {
 
   componentDidMount() {
     apiCall("nail_polish")
-    .then(response => console.log(response))
+    .then(response => this.setState({polishes: response}))
   }
 
   render() {
@@ -37,7 +37,6 @@ class App extends React.Component {
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
       <section>
-        {/* <img className="nails" src={nails}/> */}
         <Collection collection={this.state.collection}/>
       </section>
     </main>

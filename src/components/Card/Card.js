@@ -2,8 +2,6 @@ import "./Card.css"
 
 export const Card = ({ image, brand, colorway, hue }) => {
 
-  console.log(hue)
-
   return (
     <section className="card">
       <section className="polish-image">
@@ -14,7 +12,7 @@ export const Card = ({ image, brand, colorway, hue }) => {
         <h3 className="colorway">Colorway: {colorway}</h3>
         <div className="hue-display">
           <h3>Hue: </h3>
-          <div className="hue" style={{backgroundColor: hue}}>o</div>
+          <div className="hue" style={{backgroundColor: hue}}></div>
         </div>
       </section>
     </section>
