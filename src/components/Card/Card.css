@@ -23,6 +23,19 @@
   height: auto;
 }
 
+.hue-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hue {
+  height: 2vh;
+  width: 2vh;
+  border-radius: 50%;
+  margin-left: 2em;
+}
+
 img {
   height: 100%;
   width: auto;

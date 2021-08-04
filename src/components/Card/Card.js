@@ -1,7 +1,8 @@
 import "./Card.css"
 
-export const Card = (props) => {
-  const { image, brand, colorway, hue } = props
+export const Card = ({ image, brand, colorway, hue }) => {
+
+  console.log(hue)
 
   return (
     <section className="card">
@@ -11,7 +12,10 @@ export const Card = (props) => {
       <section className="polish-details">
         <h3 className="brand-name">Brand: {brand}</h3>
         <h3 className="colorway">Colorway: {colorway}</h3>
-        <h3 className="hue">Hue: {hue}</h3>
+        <div className="hue-display">
+          <h3>Hue: </h3>
+          <div className="hue" style={{backgroundColor: hue}}>o</div>
+        </div>
       </section>
     </section>
   )
