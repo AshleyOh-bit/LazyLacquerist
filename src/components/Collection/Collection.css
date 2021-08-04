@@ -1,0 +1,10 @@
+.polish-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 500px));
+  grid-gap: 5%;
+  height: 105vh;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 2%;
+  margin-bottom: 5%;
+}

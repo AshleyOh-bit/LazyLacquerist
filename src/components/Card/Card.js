@@ -1,3 +1,5 @@
+import "./Card.css"
+
 export const Card = (props) => {
   const { image, brand, colorway, hue } = props
 

@@ -15,6 +15,7 @@ class App extends React.Component {
       polishes: [],
       collection: [
         {
+          id: 0,
           image: CNDblackpool,
           brand: "CND",
           colorway: "blackpool",
