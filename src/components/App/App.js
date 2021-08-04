@@ -3,13 +3,24 @@ import './App.css';
 
 import { apiCall } from "../../utilities/apiCalls"
 
+import { Collection } from "../Collection/Collection"
+
 import nails from "../../assets/mani-icon.png"
+import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
 
 class App extends React.Component {
   constructor() {
     super()
     this.state ={
-      polishes: []
+      polishes: [],
+      collection: [
+        {
+          image: CNDblackpool,
+          brand: "CND",
+          colorway: "blackpool",
+          hue: "#341555"
+        }
+      ]
     }
   }
 
@@ -25,7 +36,8 @@ class App extends React.Component {
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
       <section>
-        <img className="nails" src={nails}/>
+        {/* <img className="nails" src={nails}/> */}
+        <Collection collection={this.state.collection}/>
       </section>
     </main>
     )
