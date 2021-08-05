@@ -6,7 +6,7 @@ import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 
-import nails from "../../assets/mani-icon.png"
+// import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
 
 class App extends React.Component {
@@ -39,7 +39,6 @@ class App extends React.Component {
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
-      {console.log(this.state)}
       <section>
         <Collection collection={this.state.collection}/>
       </section>
