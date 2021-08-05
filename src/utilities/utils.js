@@ -1,4 +1,4 @@
-export const cleanData = (data) => {
+export const cleanData = data => {
   const freshData = data.map(currentPolish => {
     return {
       id: currentPolish.id,
@@ -10,11 +10,9 @@ export const cleanData = (data) => {
   return freshData
 }
 
-export const checkForErr = (response) => {
-  if(response.status >= 500) {
-    return "Our servers are currently down. Please try again."
-  } else if (!response.ok) {
-    return 'Something went wrong. Please try again later.'
+export const checkForErr = response => {
+  if (!response.ok) {
+    throw new Error(response.status)
   } else {
     return response.json()
   }

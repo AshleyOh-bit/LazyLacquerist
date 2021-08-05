@@ -22,13 +22,15 @@ class App extends React.Component {
           colorway: "blackpool",
           hue: "#341555"
         }
-      ]
+      ],
+      error: ""
     }
   }
 
   componentDidMount() {
     apiCall("nail_polish")
     .then(response => this.setState({polishes: cleanData(response)}))
+    .catch(err => this.setState({error: err}))
   }
 
   render() {
@@ -37,7 +39,7 @@ class App extends React.Component {
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
-      {console.log(this.state.polishes)}
+      {console.log(this.state)}
       <section>
         <Collection collection={this.state.collection}/>
       </section>
