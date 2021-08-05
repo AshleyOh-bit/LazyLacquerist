@@ -1,0 +1,46 @@
+.card {
+  border: 1px solid #f85f60;
+  border-radius: 3em;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60%;
+  background-color: white;
+}
+
+.polish-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+}
+
+.polish-details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+}
+
+.hue-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hue {
+  height: 2vh;
+  width: 2vh;
+  border-radius: 50%;
+  margin-left: 2vh;
+}
+
+img {
+  height: 100%;
+  width: auto;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 3em;
+}
