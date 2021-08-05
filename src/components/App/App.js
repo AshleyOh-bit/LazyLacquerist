@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 
 import { apiCall } from "../../utilities/apiCalls"
+import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 
@@ -27,7 +28,7 @@ class App extends React.Component {
 
   componentDidMount() {
     apiCall("nail_polish")
-    .then(response => this.setState({polishes: response}))
+    .then(response => this.setState({polishes: cleanData(response)}))
   }
 
   render() {
@@ -36,6 +37,7 @@ class App extends React.Component {
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
+      {console.log(this.state.polishes)}
       <section>
         <Collection collection={this.state.collection}/>
       </section>
