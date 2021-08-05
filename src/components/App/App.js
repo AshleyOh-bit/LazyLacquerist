@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 
 import { apiCall } from "../../utilities/apiCalls"
+import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 
-import nails from "../../assets/mani-icon.png"
+// import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
 
 class App extends React.Component {
@@ -21,13 +22,15 @@ class App extends React.Component {
           colorway: "blackpool",
           hue: "#341555"
         }
-      ]
+      ],
+      error: ""
     }
   }
 
   componentDidMount() {
     apiCall("nail_polish")
-    .then(response => this.setState({polishes: response}))
+    .then(response => this.setState({polishes: cleanData(response)}))
+    .catch(err => this.setState({error: err}))
   }
 
   render() {
