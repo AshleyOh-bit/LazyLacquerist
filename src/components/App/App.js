@@ -5,6 +5,7 @@ import { apiCall } from "../../utilities/apiCalls"
 import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
+import { Form } from "../Form/Form"
 
 // import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
@@ -27,6 +28,18 @@ class App extends React.Component {
     }
   }
 
+ findPolishBrand = (userBrand) => {
+    const brandMatch = this.state.polishes.find(polish => {
+      return polish.brand === userBrand
+    })
+
+    if (brandMatch) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   componentDidMount() {
     apiCall("nail_polish")
     .then(response => this.setState({polishes: cleanData(response)}))
@@ -38,9 +51,11 @@ class App extends React.Component {
     <main>
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
+        <Form polishes={this.state.polishes}/>
       </header>
       <section>
         <Collection collection={this.state.collection}/>
+        {/* <Form polishes={this.state.polishes}/> */}
       </section>
     </main>
     )
