@@ -5,15 +5,15 @@ export const Card = ({ image, brand, colorway, hue }) => {
   return (
     <section className="card collection-border">
       <section className="polish-image">
-        <img src={image} alt={ `${brand} nail polish in ${colorway}`}/>
+        {image && <img src={image} alt={ `${brand} nail polish in ${colorway}`}/>}
       </section>
       <section className="polish-details">
         <h3 className="brand-name">Brand: {brand}</h3>
         <h3 className="colorway">Colorway: {colorway}</h3>
-        <div className="hue-display">
-          <h3>Hue: </h3>
-          <div className="hue" style={{backgroundColor: hue}}></div>
-        </div>
+        {hue && <div className="hue-display">
+                  <h3>Hue: </h3>
+                  <div className="hue" style={{backgroundColor: hue}}></div>
+                </div>}
       </section>
     </section>
   )
