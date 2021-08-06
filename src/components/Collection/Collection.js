@@ -1,5 +1,6 @@
 import "./Collection.css"
 import { Card } from "../Card/Card"
+import { Link } from 'react-router-dom';
 
 export const Collection = ({ collection }) => {
 
@@ -18,7 +19,7 @@ export const Collection = ({ collection }) => {
 
   return (
     <section className="collection">
-      <button className="polish-button">Add a polish</button>
+      <Link to="/add-a-polish"> <button className="polish-button">Add a polish</button> </Link>
       <section className="polish-display">
         {cards}
       </section>

@@ -6,6 +6,7 @@ import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
+import { Route } from 'react-router-dom';
 
 // import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
@@ -52,10 +53,23 @@ class App extends React.Component {
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
       </header>
-      <section>
-        <Collection collection={this.state.collection}/>
-        <Form polishes={this.state.polishes}/>
-      </section>
+        <Route exact path="/" render={(props) => {
+          return (
+            <>
+              {this.state.collection.length && <Collection collection={this.state.collection}/>}
+            </>
+          )
+        }}>
+        </Route>
+        <Route exact path="/add-a-polish" render={(props) => {
+          return (
+            <>
+              {this.state.polishes.length && <Form polishes={this.state.polishes}/>}
+            </>
+          )
+        }}>
+
+        </Route>
     </main>
     )
   }
