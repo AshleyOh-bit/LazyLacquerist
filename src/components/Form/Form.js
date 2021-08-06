@@ -28,13 +28,15 @@ export class Form extends React.Component {
     return listOptions
   }
 
-  buildColorOptions = (brand) => {
+  buildColorOptions = () => {
+    const chosenBrand = this.state.brand
     const foundBrand = this.state.polishes.find(polish => {
-      return polish.brand === brand
+      return polish.brand === chosenBrand
     })
+    console.log(foundBrand)
 
     if (foundBrand) {
-      const listOptions = brand.map(color => {
+      const listOptions = foundBrand.colors.map(color => {
         return (
           <option key={color.hex_value} value={color.colour_name}>
             {color.colour_name}
@@ -43,7 +45,7 @@ export class Form extends React.Component {
       });
       return listOptions
     } else {
-      return 
+      return console.log("idk")
     }
   }
 
@@ -62,15 +64,13 @@ export class Form extends React.Component {
     this.setState({ [name]: value})
     const filteredPolishes =  this.filterByBrand(name)
     const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
-    // const colorOpts = this.buildColorOptions(name.colors)
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
-    //this.setState({ filtPolishes: filteredPolishes, colorOptions: colorOpts });
   }
 
   handleColorChange = event => {
     const { name, value } = event.target
     this.setState({ [name]: value})
-    const colorOpts = this.buildColorOptions(name.colors)
+    const colorOpts = this.buildColorOptions()
     this.setState({ colorOptions: colorOpts });
   }
 
@@ -112,9 +112,9 @@ export class Form extends React.Component {
               onChange={event => this.handleColorChange(event)}
             />
             <datalist 
-              id="colors">{this.state.brandOptions}
+              id="colors">{this.state.colorOptions}
             </datalist>
-            <button className="confirm-polish"></button>
+            <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button>
           </section>
         {/* <input 
           disabled
