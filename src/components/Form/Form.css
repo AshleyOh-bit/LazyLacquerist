@@ -21,14 +21,37 @@
 }
 
 input {
-  margin: 2em;
-  border: 1.5px solid #f85f60;
+  margin-top: 2em;
+  border: 2px solid #f85f60;
   border-radius: .5em;
   height: 3em;
-  width: 75%;
+  width: 78%;
 }
 
 .add-button {
   background-color: #f6d03d;
   height: 2.5em;
+}
+
+.confirm-polish {
+  background-image: url(../../assets/check-mark.png);
+  height: 2em;
+  width: 2em;
+  background-size: 100%;
+  border-radius: 50%;
+  border: none;
+  margin-top: 2em;
+  margin-left: 1em;
+}
+
+.set-confirm-polish {
+  background-color: #15a584
+}
+
+.brand-inputs {
+  display: flex;
+}
+
+.confirm-polish:hover {
+  background-color:#93ccc1
 }

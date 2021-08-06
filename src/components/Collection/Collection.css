@@ -35,3 +35,7 @@ button {
 .polish-button {
   background-color: #15a584;
 }
+
+button:hover {
+  cursor: pointer;
+}

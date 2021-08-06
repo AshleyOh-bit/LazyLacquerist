@@ -78,29 +78,38 @@ export class Form extends React.Component {
     return (
       <section className="add-view polish-display">
         <form className="card add-border">
-        <input 
-          required
-          type="search" 
-          name="brand" 
-          placeholder="Add your brand"
-          list="brands"
-          id="brand" 
-          value={this.state.brand} 
-          onChange={event => this.handleBrandChange(event)}
-          
-        />
-        <datalist 
-          id="brands">{this.state.brandOptions}
-        </datalist>
-        <input 
-          // disabled={this.state.inputStatus}
-          required
-          type="search" 
-          name="colorway" 
-          placeholder="Add your colorway" 
-          value={this.state.colorway} 
-          onClick={event => this.handleColorChange(event)}
-        />
+          <section className="brand-inputs">
+            <input 
+            required
+            type="search" 
+            name="brand" 
+            placeholder="Add your brand"
+            list="brands"
+            id="brand" 
+            value={this.state.brand} 
+            onChange={event => this.handleBrandChange(event)}
+            />
+            <datalist 
+              id="brands">{this.state.brandOptions}
+            </datalist>
+            <button className="confirm-polish"></button>
+          </section>
+          <section className="brand-inputs">
+            <input 
+              disabled={this.state.inputStatus}
+              required
+              type="search" 
+              name="colorway" 
+              list="colors"
+              placeholder="Add your colorway" 
+              value={this.state.colorway} 
+              onChange={event => this.handleColorChange(event)}
+            />
+            <datalist 
+              id="colors">{this.state.brandOptions}
+            </datalist>
+            <button className="confirm-polish"></button>
+          </section>
         {/* <input 
           disabled
           required

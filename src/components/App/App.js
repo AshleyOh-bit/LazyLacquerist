@@ -64,7 +64,7 @@ class App extends React.Component {
         <Route exact path="/add-a-polish" render={(props) => {
           return (
             <>
-              {this.state.polishes.length && <Form polishes={this.state.polishes}/>}
+              <Form polishes={this.state.polishes}/>
             </>
           )
         }}>
