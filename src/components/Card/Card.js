@@ -3,7 +3,7 @@ import "./Card.css"
 export const Card = ({ image, brand, colorway, hue }) => {
 
   return (
-    <section className="card">
+    <section className="card collection-border">
       <section className="polish-image">
         <img src={image} alt={ `${brand} nail polish in ${colorway}`}/>
       </section>

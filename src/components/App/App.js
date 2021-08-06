@@ -6,7 +6,7 @@ import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 // import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
@@ -51,7 +51,7 @@ class App extends React.Component {
     return (
     <main>
       <header>
-        <h1 className="title">The Lazy Lacquerist</h1>
+        <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
         <Route exact path="/" render={(props) => {
           return (

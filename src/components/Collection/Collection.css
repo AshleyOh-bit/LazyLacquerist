@@ -20,8 +20,7 @@
   margin-bottom: 5%;
 }
 
-.polish-button {
-  background-color: #15a584;
+button {
   border: 2px solid black;
   height: 3em;
   width: 10em;
@@ -31,4 +30,8 @@
   margin-bottom: 2em;
   font-weight: bold;
   font-size: 1em;
+}
+
+.polish-button {
+  background-color: #15a584;
 }

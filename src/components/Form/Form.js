@@ -76,8 +76,8 @@ export class Form extends React.Component {
 
   render() {
     return (
-      <section className="add-view">
-        <form className="card">
+      <section className="add-view polish-display">
+        <form className="card add-border">
         <input 
           required
           type="search" 
@@ -113,7 +113,7 @@ export class Form extends React.Component {
         <button 
           required
           disabled
-          type="submit">Add me!</button>
+          type="submit" className="add-button">Add me!</button>
       </form>
       </section>
     )

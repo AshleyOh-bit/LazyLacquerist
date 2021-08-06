@@ -1,4 +1,4 @@
-html {
+html, main {
   height: 100%;
   width: 100%;
   font-family: "Roboto", Arial, sans-serif;
@@ -8,6 +8,7 @@ header {
   border-bottom: 3px dashed black;
   display: flex;
   justify-content: center;
+  align-items: center;
   text-transform: uppercase;
   font-style: italic;
 }
@@ -15,10 +16,5 @@ header {
 .nails {
   height: 500px;
   width: auto;
-}
-
-section {
-  display: flex;
-  height: 100%;
 }
 
