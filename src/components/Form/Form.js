@@ -74,6 +74,11 @@ export class Form extends React.Component {
     this.setState({ colorOptions: colorOpts });
   }
 
+  handleClick = event => {
+    event.preventDefault()
+    this.setState({ inputStatus: false })
+  }
+
   render() {
     return (
       <section className="add-view polish-display">
@@ -81,6 +86,7 @@ export class Form extends React.Component {
           <section className="brand-inputs">
             <input 
             required
+            disabled={!this.state.inputStatus}
             type="search" 
             name="brand" 
             placeholder="Add your brand"
@@ -92,7 +98,7 @@ export class Form extends React.Component {
             <datalist 
               id="brands">{this.state.brandOptions}
             </datalist>
-            <button className="confirm-polish"></button>
+            <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button>
           </section>
           <section className="brand-inputs">
             <input 
@@ -121,7 +127,6 @@ export class Form extends React.Component {
         /> */}
         <button 
           required
-          disabled
           type="submit" className="add-button">Add me!</button>
       </form>
       </section>
