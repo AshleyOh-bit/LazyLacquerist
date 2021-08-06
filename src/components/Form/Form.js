@@ -1,5 +1,6 @@
 import React from "react"
 import "./Form.css"
+import { Link } from 'react-router-dom';
 
 export class Form extends React.Component {
   constructor(props) {
@@ -33,7 +34,6 @@ export class Form extends React.Component {
     const foundBrand = this.state.polishes.find(polish => {
       return polish.brand === chosenBrand
     })
-    console.log(foundBrand)
 
     if (foundBrand) {
       const listOptions = foundBrand.colors.map(color => {
@@ -44,9 +44,7 @@ export class Form extends React.Component {
         );
       });
       return listOptions
-    } else {
-      return console.log("idk")
-    }
+    } 
   }
 
   filterByBrand = name => {
@@ -76,7 +74,17 @@ export class Form extends React.Component {
 
   handleClick = event => {
     event.preventDefault()
-    this.setState({ inputStatus: false })
+    const reverse = !this.state.inputStatus
+    this.setState({ inputStatus: reverse })
+  }
+
+  sendPolish = (event) => {
+    event.preventDefault()
+    const freshPolish = {
+      brand: this.state.brand,
+      color: this.state.colorway
+    }
+    this.props.addPolish(freshPolish)
   }
 
   render() {
@@ -125,9 +133,13 @@ export class Form extends React.Component {
           value={this.state.hue} 
           onChange={}
         /> */}
-        <button 
+        <Link to="/"><button 
           required
-          type="submit" className="add-button">Add me!</button>
+          type="submit" 
+          className="add-button" 
+          onClick={(event) => this.sendPolish(event)}>
+            Add me!
+          </button></Link>
       </form>
       </section>
     )

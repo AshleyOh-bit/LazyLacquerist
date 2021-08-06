@@ -29,17 +29,51 @@ class App extends React.Component {
     }
   }
 
- findPolishBrand = (userBrand) => {
-    const brandMatch = this.state.polishes.find(polish => {
-      return polish.brand === userBrand
-    })
+ addPolish = newPolish => {
+   console.log(newPolish)
+   this.setState({collection: [...this.state.collection, newPolish]})
+   const foundPolish = this.state.polishes.find(polish => {
+     return polish.brand === newPolish.brand
+   })
 
-    if (brandMatch) {
-      return true
-    } else {
-      return false
-    }
-  }
+   console.log(foundPolish)
+   const index = this.state.polishes.findIndex(foundPolish => {
+     return foundPolish.brand === newPolish.brand
+   })
+   let copy = [...this.state.polishes]
+
+   if (foundPolish) {
+     const foundColor = foundPolish.colors.find(color => {
+       return color.colour === newPolish.colour_name
+     })
+     if (!foundColor) {
+       copy[index].colors = [...this.this.state.polishes[index].colors,  
+        {
+          // hex_value: newPolish.hexCode,
+          colour_name: newPolish.colorway
+        }]
+      //  copy[index] = {...copy[index], colors: [...colors,
+      //    {
+      //     hex_value: newPolish.hexCode,
+      //     colour_name: newPolish.colorway
+      //    }
+      //  ]}
+      this.setState({polishes: copy})
+       //add it to state in the right place lol
+       //set the colorway as an object with a name and hex color in the
+       //colors array in state
+      //  this.setState({polishes: [
+      //    polishes[index]: {
+              // hex_value: newPolish.hexCode,
+              // colour_name: newPolish.colorway
+      //} [...this.state.polishes[foundPolish].colors, newPolish.color]
+      //   ]})
+     }
+   } else {
+     //update newPolish to include a colors array
+     this.setState({polishes: [...this.state.polishes, newPolish]})
+   }
+ }
 
   componentDidMount() {
     apiCall("nail_polish")
@@ -64,7 +98,7 @@ class App extends React.Component {
         <Route exact path="/add-a-polish" render={(props) => {
           return (
             <>
-              <Form polishes={this.state.polishes}/>
+              <Form polishes={this.state.polishes} addPolish={this.addPolish}/>
             </>
           )
         }}>

@@ -7,7 +7,9 @@ export const cleanData = data => {
       colors: currentPolish.product_colors
     }
   })
-  // console.log(freshData)
+  console.log(freshData)
+
+  //CHECK ALL BRANDS COLORS ARRAY TO MAKE SURE COLOUR_NAME IS CONSISTENT IN ALL DATA
 
 //   freshData.reduce((acc, currentPolish) => {
 //     if (acc.inlcudes())
