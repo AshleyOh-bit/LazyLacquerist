@@ -6,6 +6,7 @@ export class Form extends React.Component {
     this.state = {
       polishes: props.polishes,
       filtPolishs: [],
+      filtColors: [],
       brandOptions: [],
       colorOptions: [],
       brand: "",
@@ -14,27 +15,46 @@ export class Form extends React.Component {
     }
   }
 
+  buildOptions = (location, name) => {
+    const listOptions = location.map(polish => {
+      return (
+        <option key={polish.id} value={polish[name]}>
+          {polish[name]}
+        </option>
+      );
+    });
+    return listOptions
+  }
+
+  filterByBrand = name => {
+    const lowerCase = this.state[name].toLowerCase()
+    const filtered = this.state.polishes.filter(polish => {
+      const polishCase = polish[name].toLowerCase()
+      return polishCase.includes(lowerCase)
+    })
+    return filtered
+  }
+
   handleChange = event => {
     const { name, value } = event.target
 
     this.setState({ [name]: value})
-    const lowerCase = this.state[name].toLowerCase()
-    console.log(this.state[name])
-    const filteredPolishes = this.state.polishes.filter(polish => {
-      console.log(polish.brand.includes(this.state.brand))
-      const polishCase = polish[name].toLowerCase()
-      return polishCase.includes(lowerCase)
-    })
+    // const lowerCase = this.state[name].toLowerCase()
+    // const filteredPolishes = this.state.polishes.filter(polish => {
+    //   const polishCase = polish[name].toLowerCase()
+    //   return polishCase.includes(lowerCase)
+    // })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
-    const listOptions = filteredPolishes.map(polish => {
-      return (
-        <option key={polish.id} value={polish.brand}>
-          {polish.brand}
-        </option>
-      );
-    });
-    this.setState({ filtPolishes: filteredPolishes, brandOptions: listOptions });
-    console.log(this.state.filtPolishes)
+    // const listOptions = filteredPolishes.map(polish => {
+    //   return (
+    //     <option key={polish.id} value={polish[name]}>
+    //       {polish[name]}
+    //     </option>
+    //   );
+    // });
+    const filteredPolishes =  this.filterByBrand(name)
+    const brandOpts = this.buildOptions(filteredPolishes, "brand")
+    this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
     //this.setState({ filtPolishes: filteredPolishes, colorOptions: listOptions });
   }
 

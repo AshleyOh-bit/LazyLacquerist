@@ -10,6 +10,8 @@ export const cleanData = data => {
   return freshData
 }
 
+//find a way to consolidate multiple brand name matches
+
 export const checkForErr = response => {
   if (!response.ok) {
     throw new Error(response.status)
