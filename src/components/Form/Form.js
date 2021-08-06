@@ -79,10 +79,10 @@ export class Form extends React.Component {
   }
 
   sendPolish = (event) => {
-    event.preventDefault()
+    //event.preventDefault()
     const freshPolish = {
       brand: this.state.brand,
-      color: this.state.colorway
+      colorway: this.state.colorway
     }
     this.props.addPolish(freshPolish)
   }

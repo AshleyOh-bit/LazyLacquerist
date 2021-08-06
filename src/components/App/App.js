@@ -36,11 +36,13 @@ class App extends React.Component {
      return polish.brand === newPolish.brand
    })
 
-   console.log(foundPolish)
+  //  console.log(foundPolish)
    const index = this.state.polishes.findIndex(foundPolish => {
      return foundPolish.brand === newPolish.brand
    })
    let copy = [...this.state.polishes]
+
+   console.log(foundPolish)
 
    if (foundPolish) {
      const foundColor = foundPolish.colors.find(color => {
