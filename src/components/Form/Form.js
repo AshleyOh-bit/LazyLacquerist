@@ -1,4 +1,5 @@
 import React from "react"
+import "./Form.css"
 
 export class Form extends React.Component {
   constructor(props) {
@@ -11,11 +12,12 @@ export class Form extends React.Component {
       colorOptions: [],
       brand: "",
       colorway: "",
-      hue: ""
+      hue: "",
+      inputStatus: true,
     }
   }
 
-  buildOptions = (location, name) => {
+  buildBrandOptions = (location, name) => {
     const listOptions = location.map(polish => {
       return (
         <option key={polish.id} value={polish[name]}>
@@ -24,6 +26,25 @@ export class Form extends React.Component {
       );
     });
     return listOptions
+  }
+
+  buildColorOptions = (brand) => {
+    const foundBrand = this.state.polishes.find(polish => {
+      return polish.brand === brand
+    })
+
+    if (foundBrand) {
+      const listOptions = brand.map(color => {
+        return (
+          <option key={color.hex_value} value={color.colour_name}>
+            {color.colour_name}
+          </option>
+        );
+      });
+      return listOptions
+    } else {
+      return 
+    }
   }
 
   filterByBrand = name => {
@@ -35,32 +56,28 @@ export class Form extends React.Component {
     return filtered
   }
 
-  handleChange = event => {
+  handleBrandChange = event => {
     const { name, value } = event.target
 
     this.setState({ [name]: value})
-    // const lowerCase = this.state[name].toLowerCase()
-    // const filteredPolishes = this.state.polishes.filter(polish => {
-    //   const polishCase = polish[name].toLowerCase()
-    //   return polishCase.includes(lowerCase)
-    // })                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-
-    // const listOptions = filteredPolishes.map(polish => {
-    //   return (
-    //     <option key={polish.id} value={polish[name]}>
-    //       {polish[name]}
-    //     </option>
-    //   );
-    // });
     const filteredPolishes =  this.filterByBrand(name)
-    const brandOpts = this.buildOptions(filteredPolishes, "brand")
+    const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
+    // const colorOpts = this.buildColorOptions(name.colors)
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
-    //this.setState({ filtPolishes: filteredPolishes, colorOptions: listOptions });
+    //this.setState({ filtPolishes: filteredPolishes, colorOptions: colorOpts });
+  }
+
+  handleColorChange = event => {
+    const { name, value } = event.target
+    this.setState({ [name]: value})
+    const colorOpts = this.buildColorOptions(name.colors)
+    this.setState({ colorOptions: colorOpts });
   }
 
   render() {
     return (
-      <form onSubmit={(event) => this.handleChange(event)}>
+      <section className="add-view">
+        <form className="card">
         <input 
           required
           type="search" 
@@ -69,21 +86,22 @@ export class Form extends React.Component {
           list="brands"
           id="brand" 
           value={this.state.brand} 
-          onChange={event => this.handleChange(event)}
+          onChange={event => this.handleBrandChange(event)}
+          
         />
         <datalist 
           id="brands">{this.state.brandOptions}
         </datalist>
-        {/* <input 
-          disabled
+        <input 
+          // disabled={this.state.inputStatus}
           required
           type="search" 
           name="colorway" 
           placeholder="Add your colorway" 
           value={this.state.colorway} 
-          onChange={}
+          onClick={event => this.handleColorChange(event)}
         />
-        <input 
+        {/* <input 
           disabled
           required
           type="text" 
@@ -97,6 +115,7 @@ export class Form extends React.Component {
           disabled
           type="submit">Add me!</button>
       </form>
+      </section>
     )
   }
 

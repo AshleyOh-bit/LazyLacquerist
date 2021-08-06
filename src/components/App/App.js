@@ -51,11 +51,10 @@ class App extends React.Component {
     <main>
       <header>
         <h1 className="title">The Lazy Lacquerist</h1>
-        <Form polishes={this.state.polishes}/>
       </header>
       <section>
         <Collection collection={this.state.collection}/>
-        {/* <Form polishes={this.state.polishes}/> */}
+        <Form polishes={this.state.polishes}/>
       </section>
     </main>
     )

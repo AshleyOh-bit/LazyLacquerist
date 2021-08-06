@@ -7,10 +7,14 @@ export const cleanData = data => {
       colors: currentPolish.product_colors
     }
   })
+  console.log(freshData)
   return freshData
 }
 
 //find a way to consolidate multiple brand name matches
+
+//iterate over the data array using reduce with an array
+//iterate 
 
 export const checkForErr = response => {
   if (!response.ok) {
