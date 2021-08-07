@@ -1,7 +1,7 @@
 import React from "react";
 import "./Form.css";
 import { Link } from 'react-router-dom';
-import { GithubPicker } from "react-color";
+import { CirclePicker } from "react-color";
 
 export class Form extends React.Component {
   constructor(props) {
@@ -17,6 +17,9 @@ export class Form extends React.Component {
       hue: "",
       image: "",
       inputStatus: true,
+      bgBrandColor: "",
+      bgColorwayColor: "",
+      submitReady: true
     }
   }
 
@@ -73,10 +76,15 @@ export class Form extends React.Component {
     this.setState({ colorOptions: colorOpts });
   }
 
-  handleClick = event => {
+  handleClick = (event, buttonName) => {
     event.preventDefault()
+    this.validateInputs()
     const reverse = !this.state.inputStatus
-    this.setState({ inputStatus: reverse })
+    if (!this.state[buttonName]) {
+      this.setState({ inputStatus: reverse, [buttonName]: "#93ccc1" })
+    } else {
+      this.setState({ inputStatus: reverse, [buttonName]: "" })
+    }
   }
 
   sendPolish = (event) => {
@@ -99,15 +107,22 @@ export class Form extends React.Component {
     this.setState({ [name]: value })
   }
 
+  validateInputs = () => {
+    if (this.state.brand && this.state.colorway) {
+      this.setState({ submitReady: false })
+    } 
+  }
+
   render() {
     return (
       <section className="add-view polish-display">
         <form className="card add-border">
+          <h2>Add a polish!</h2>
           <section className="brand-inputs">
             <input 
               type="text"
               name="image"
-              placeholder="Add an image"
+              placeholder="Add Image"
               value={this.state.image}
               onChange={event => this.handleChange(event)}
             />
@@ -115,10 +130,10 @@ export class Form extends React.Component {
           <section className="brand-inputs">
             <input 
             required
-            disabled={!this.state.inputStatus}
+            // disabled={!this.state.inputStatus}
             type="search" 
             name="brand" 
-            placeholder="Add your brand"
+            placeholder="Add brand"
             list="brands"
             id="brand" 
             value={this.state.brand} 
@@ -127,7 +142,13 @@ export class Form extends React.Component {
             <datalist 
               id="brands">{this.state.brandOptions}
             </datalist>
-            <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button>
+            <button 
+              className="add-input" 
+              onClick={(event) => this.handleClick(event, "bgBrandColor")}
+              style={{backgroundColor: this.state.bgBrandColor}}
+            >
+                ok
+            </button>
           </section>
           <section className="brand-inputs">
             <input 
@@ -136,18 +157,29 @@ export class Form extends React.Component {
               type="search" 
               name="colorway" 
               list="colors"
-              placeholder="Add your colorway" 
+              placeholder="Add colorway" 
               value={this.state.colorway} 
               onChange={event => this.handleColorwayChange(event)}
             />
             <datalist 
               id="colors">{this.state.colorOptions}
             </datalist>
-            <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button>
+            <button 
+              className="add-input" 
+              onClick={(event) => this.handleClick(event, "bgColorwayColor")}
+              style={{backgroundColor: this.state.bgColorwayColor}}
+            >
+                ok
+            </button>
+            {/* <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button> */}
           </section>
-        <GithubPicker color={this.state.hue} onChange={this.setHue}/>
+        <CirclePicker 
+          disabled={this.state.inputStatus}
+          color={this.state.hue} 
+          onChange={this.setHue}
+        />
         <Link to="/"><button 
-          required
+          disabled={this.state.submitReady}
           type="submit" 
           className="add-button" 
           onClick={(event) => this.sendPolish(event)}>

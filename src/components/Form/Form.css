@@ -22,7 +22,7 @@
 
 input {
   margin-top: 2em;
-  border: 2px solid #f85f60;
+  border: 2px solid #fba5a9;
   border-radius: .5em;
   height: 3em;
   width: 78%;
@@ -40,6 +40,15 @@ input {
   background-size: 100%;
   border-radius: 50%;
   border: none;
+  margin-top: 2em;
+  margin-left: 1em;
+}
+
+.add-input {
+  height: 2em;
+  width: 2.5em;
+  border-radius: .5em;
+  border: 2px solid black;
   margin-top: 2em;
   margin-left: 1em;
 }
