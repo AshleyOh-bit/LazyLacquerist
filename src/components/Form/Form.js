@@ -16,7 +16,6 @@ export class Form extends React.Component {
       colorway: "",
       hue: "",
       image: "",
-      inputStatus: true,
       bgBrandColor: "",
       bgColorwayColor: "",
       submitReady: true
@@ -64,27 +63,30 @@ export class Form extends React.Component {
   }
 
   handleBrandChange = event => {
+    this.validateInputs()
     this.handleChange(event)
     const filteredPolishes =  this.filterByBrand(event.target.name)
     const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
+    this.handleClick(event, "bgBrandColor")
   }
 
   handleColorwayChange = event => {
+    // this.validateInputs()
     this.handleChange(event)
     const colorOpts = this.buildColorOptions()
     this.setState({ colorOptions: colorOpts });
+    this.handleClick(event, "bgColorwayColor")
   }
 
   handleClick = (event, buttonName) => {
-    event.preventDefault()
     this.validateInputs()
-    const reverse = !this.state.inputStatus
     if (!this.state[buttonName]) {
-      this.setState({ inputStatus: reverse, [buttonName]: "#93ccc1" })
+      this.setState({ [buttonName]: "#93ccc1" })
     } else {
-      this.setState({ inputStatus: reverse, [buttonName]: "" })
+      this.setState({ [buttonName]: "" })
     }
+    event.preventDefault()
   }
 
   sendPolish = (event) => {
@@ -95,6 +97,7 @@ export class Form extends React.Component {
       hue: this.state.hue,
       image: this.state.image
     }
+    // this.validateInputs()
     this.props.addPolish(freshPolish)
   }
 
@@ -110,7 +113,9 @@ export class Form extends React.Component {
   validateInputs = () => {
     if (this.state.brand && this.state.colorway) {
       this.setState({ submitReady: false })
-    } 
+    } else {
+      this.setState({ submitReady: true })
+    }
   }
 
   render() {
@@ -125,6 +130,7 @@ export class Form extends React.Component {
               placeholder="Add Image"
               value={this.state.image}
               onChange={event => this.handleChange(event)}
+              onClick={event => this.handleChange(event)}
             />
           </section>
           <section className="brand-inputs">
@@ -138,6 +144,7 @@ export class Form extends React.Component {
             id="brand" 
             value={this.state.brand} 
             onChange={event => this.handleBrandChange(event)}
+            onClick={event => this.handleChange(event)}
             />
             <datalist 
               id="brands">{this.state.brandOptions}
@@ -152,7 +159,7 @@ export class Form extends React.Component {
           </section>
           <section className="brand-inputs">
             <input 
-              disabled={this.state.inputStatus}
+              // disabled={this.state.inputStatus}
               required
               type="search" 
               name="colorway" 
@@ -179,6 +186,7 @@ export class Form extends React.Component {
           onChange={this.setHue}
         />
         <Link to="/"><button 
+          required
           disabled={this.state.submitReady}
           type="submit" 
           className="add-button" 
