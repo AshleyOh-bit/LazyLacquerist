@@ -67,26 +67,28 @@ export class Form extends React.Component {
     this.handleChange(event)
     const filteredPolishes =  this.filterByBrand(event.target.name)
     const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
-    this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
-    this.handleClick(event, "bgBrandColor")
+    this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts }, () => {
+      this.handleClick(event, "bgBrandColor", "brand")
+    });
   }
 
   handleColorwayChange = event => {
-    // this.validateInputs()
     this.handleChange(event)
     const colorOpts = this.buildColorOptions()
-    this.setState({ colorOptions: colorOpts });
-    this.handleClick(event, "bgColorwayColor")
+    this.setState({ colorOptions: colorOpts }, () => { this.handleClick(event, "bgColorwayColor", "colorway")
+  });
   }
 
-  handleClick = (event, buttonName) => {
+  handleClick = (event, buttonName, input) => {
     this.validateInputs()
-    if (!this.state[buttonName]) {
-      this.setState({ [buttonName]: "#93ccc1" })
-    } else {
+    event.preventDefault()
+    if (!this.state[input]) {
       this.setState({ [buttonName]: "" })
     }
-    event.preventDefault()
+
+    if (this.state[input]) {
+      this.setState({ [buttonName]: "#93ccc1" })
+    }
   }
 
   sendPolish = (event) => {
@@ -151,7 +153,7 @@ export class Form extends React.Component {
             </datalist>
             <button 
               className="add-input" 
-              onClick={(event) => this.handleClick(event, "bgBrandColor")}
+              onClick={(event) => this.handleClick(event, "bgBrandColor", "brand")}
               style={{backgroundColor: this.state.bgBrandColor}}
             >
                 ok
@@ -173,7 +175,7 @@ export class Form extends React.Component {
             </datalist>
             <button 
               className="add-input" 
-              onClick={(event) => this.handleClick(event, "bgColorwayColor")}
+              onClick={(event) => this.handleClick(event, "bgColorwayColor", "colorway")}
               style={{backgroundColor: this.state.bgColorwayColor}}
             >
                 ok
