@@ -30,22 +30,22 @@ class App extends React.Component {
   }
 
  addPolish = newPolish => {
+  //  const foundPolishes = this.state.polishes.filter(polish => {
+  //    return newPolish.brand !== polish.brand
+  //  })
    const foundPolish = this.state.polishes.find(polish => {
      return polish.brand === newPolish.brand
    })
-
    if (!foundPolish) {
     this.setState({collection: [...this.state.collection, newPolish]})
     const formattedToCollection = {
-      id: newPolish.id,
-      brand: newPolish.brand,
-      image: newPolish.image,
       colors: [
         {
           colorway: newPolish.colorway,
           hue: newPolish.hue
         }
-      ]
+      ],
+      ...newPolish
     }
     return this.setState({polishes: [...this.state.polishes, formattedToCollection]})
    } else {
@@ -53,7 +53,6 @@ class App extends React.Component {
     const index = this.state.polishes.findIndex(foundPolish => {
       return foundPolish.brand === newPolish.brand
     })
-
     const foundColor = foundPolish.colors.find(color => {
         return color.colorway === newPolish.colorway
       })

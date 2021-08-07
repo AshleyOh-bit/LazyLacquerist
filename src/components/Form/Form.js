@@ -36,7 +36,7 @@ export class Form extends React.Component {
     const foundBrand = this.state.polishes.find(polish => {
       return polish.brand === chosenBrand
     })
-    console.log(foundBrand)
+
     if (!foundBrand) {
       return
     } else {
