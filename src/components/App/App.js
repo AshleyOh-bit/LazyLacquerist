@@ -34,38 +34,46 @@ class App extends React.Component {
      return polish.brand === newPolish.brand
    })
 
-   console.log(foundPolish)
    if (!foundPolish) {
     this.setState({collection: [...this.state.collection, newPolish]})
-    return this.setState({polishes: [...this.state.polishes, newPolish]})
-   }
-
-   const index = this.state.polishes.findIndex(foundPolish => {
-     return foundPolish.brand === newPolish.brand
-   })
-   let copy = [...this.state.polishes]
-
-   if (foundPolish.colors.length) {
-     const foundColor = foundPolish.colors.find(color => {
-       return color.colorway === newPolish.colorway
-     })
-     if (!newPolish.hue && foundColor) {
-      newPolish.hue = foundColor.hue
+    const formattedToCollection = {
+      id: newPolish.id,
+      brand: newPolish.brand,
+      image: newPolish.image,
+      colors: [
+        {
+          colorway: newPolish.colorway,
+          hue: newPolish.hue
+        }
+      ]
     }
+    return this.setState({polishes: [...this.state.polishes, formattedToCollection]})
+   } else {
+    const copy = [...this.state.polishes]
+    const index = this.state.polishes.findIndex(foundPolish => {
+      return foundPolish.brand === newPolish.brand
+    })
 
-     if (!foundColor) {
-       copy[index].colors = [...this.state.polishes[index].colors,  
+    const foundColor = foundPolish.colors.find(color => {
+        return color.colorway === newPolish.colorway
+      })
+    if (!foundColor) {
+      copy[index].colors = [...this.state.polishes[index].colors,  
         {
           hue: newPolish.hue,
           colorway: newPolish.colorway
-        }]
+        }
+      ]
       this.setState({polishes: copy})
-     }
-     if (!newPolish.image) {
-        newPolish.image = foundPolish.image
-     }
-   } 
-   this.setState({collection: [...this.state.collection, newPolish]})
+    }
+    if (!newPolish.hue && foundColor) {
+      newPolish.hue = foundColor.hue
+    }
+    if (!newPolish.image) {
+      newPolish.image = foundPolish.image
+    }
+  }
+  this.setState({collection: [...this.state.collection, newPolish]})
  }
 
   componentDidMount() {

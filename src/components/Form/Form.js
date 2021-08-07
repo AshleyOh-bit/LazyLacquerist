@@ -38,10 +38,8 @@ export class Form extends React.Component {
     })
     console.log(foundBrand)
     if (!foundBrand) {
-      console.log("luly")
       return
-    }
-    if (foundBrand.colorway) {
+    } else {
       const listOptions = foundBrand.colors.map(color => {
         return (
           <option key={color.hue} value={color.colorway}>
