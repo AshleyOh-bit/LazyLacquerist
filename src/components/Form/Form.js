@@ -87,7 +87,7 @@ export class Form extends React.Component {
     }
 
     if (this.state[input]) {
-      this.setState({ [buttonName]: "#93ccc1" })
+      this.setState({ [buttonName]: "#15a584" })
     }
   }
 
@@ -99,7 +99,6 @@ export class Form extends React.Component {
       hue: this.state.hue,
       image: this.state.image
     }
-    // this.validateInputs()
     this.props.addPolish(freshPolish)
   }
 
@@ -127,18 +126,7 @@ export class Form extends React.Component {
           <h2>Add a polish!</h2>
           <section className="brand-inputs">
             <input 
-              type="text"
-              name="image"
-              placeholder="Add Image"
-              value={this.state.image}
-              onChange={event => this.handleChange(event)}
-              onClick={event => this.handleChange(event)}
-            />
-          </section>
-          <section className="brand-inputs">
-            <input 
             required
-            // disabled={!this.state.inputStatus}
             type="search" 
             name="brand" 
             placeholder="Add brand"
@@ -151,17 +139,15 @@ export class Form extends React.Component {
             <datalist 
               id="brands">{this.state.brandOptions}
             </datalist>
-            <button 
+            <div
               className="add-input" 
-              onClick={(event) => this.handleClick(event, "bgBrandColor", "brand")}
               style={{backgroundColor: this.state.bgBrandColor}}
             >
                 ok
-            </button>
+            </div>
           </section>
-          <section className="brand-inputs">
+          <section className="brand-inputs colorway-input">
             <input 
-              // disabled={this.state.inputStatus}
               required
               type="search" 
               name="colorway" 
@@ -173,29 +159,38 @@ export class Form extends React.Component {
             <datalist 
               id="colors">{this.state.colorOptions}
             </datalist>
-            <button 
+            <div
               className="add-input" 
-              onClick={(event) => this.handleClick(event, "bgColorwayColor", "colorway")}
               style={{backgroundColor: this.state.bgColorwayColor}}
             >
                 ok
-            </button>
-            {/* <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button> */}
+            </div>
           </section>
-        <CirclePicker 
-          disabled={this.state.inputStatus}
-          color={this.state.hue} 
-          onChange={this.setHue}
-        />
-        <Link to="/"><button 
-          required
-          disabled={this.state.submitReady}
-          type="submit" 
-          className="add-button" 
-          onClick={(event) => this.sendPolish(event)}>
-            Add me!
-          </button></Link>
-      </form>
+          <section className="image-input">
+            <input 
+              type="text"
+              name="image"
+              placeholder="Add Image"
+              value={this.state.image}
+              onChange={event => this.handleChange(event)}
+              onClick={event => this.handleChange(event)}
+            />
+          </section>
+          <section className="color-picker">
+            <CirclePicker 
+              disabled={this.state.inputStatus}
+              color={this.state.hue} 
+              onChange={this.setHue}
+            />
+          </section>
+          <Link to="/"><button 
+            disabled={this.state.submitReady}
+            type="submit" 
+            className="add-button" 
+            onClick={(event) => this.sendPolish(event)}>
+              Add me!
+            </button></Link>
+        </form>
       </section>
     )
   }
