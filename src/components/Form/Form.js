@@ -1,6 +1,7 @@
-import React from "react"
-import "./Form.css"
+import React from "react";
+import "./Form.css";
 import { Link } from 'react-router-dom';
+import { GithubPicker } from "react-color";
 
 export class Form extends React.Component {
   constructor(props) {
@@ -65,7 +66,7 @@ export class Form extends React.Component {
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
   }
 
-  handleColorChange = event => {
+  handleColorwayChange = event => {
     const { name, value } = event.target
     this.setState({ [name]: value})
     const colorOpts = this.buildColorOptions()
@@ -83,9 +84,14 @@ export class Form extends React.Component {
     const freshPolish = {
       id: Date.now(),
       brand: this.state.brand,
-      colorway: this.state.colorway
+      colorway: this.state.colorway,
+      hue: this.state.hue
     }
     this.props.addPolish(freshPolish)
+  }
+
+  setHue = color => {
+    this.setState({ hue: color.hex})
   }
 
   render() {
@@ -118,22 +124,14 @@ export class Form extends React.Component {
               list="colors"
               placeholder="Add your colorway" 
               value={this.state.colorway} 
-              onChange={event => this.handleColorChange(event)}
+              onChange={event => this.handleColorwayChange(event)}
             />
             <datalist 
               id="colors">{this.state.colorOptions}
             </datalist>
             <button className="confirm-polish" onClick={(event) => this.handleClick(event)}></button>
           </section>
-        {/* <input 
-          disabled
-          required
-          type="text" 
-          name="hue" 
-          placeholder="Pick your hue" 
-          value={this.state.hue} 
-          onChange={}
-        /> */}
+        <GithubPicker color={this.state.hue} onChange={this.setHue}/>
         <Link to="/"><button 
           required
           type="submit" 
