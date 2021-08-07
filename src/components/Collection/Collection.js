@@ -8,11 +8,7 @@ export const Collection = ({ collection }) => {
     return (
       <Card
         key={index}
-        id={polish.id}
-        image={polish.image}
-        brand={polish.brand}
-        colorway={polish.colour_name || polish.colorway}
-        hue={polish.hex_value || polish.hue}
+        {...polish}
       />
     )
   })

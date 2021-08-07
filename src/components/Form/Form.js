@@ -37,11 +37,13 @@ export class Form extends React.Component {
       return polish.brand === chosenBrand
     })
 
-    if (foundBrand) {
+    if (!foundBrand) {
+      return
+    } else {
       const listOptions = foundBrand.colors.map(color => {
         return (
-          <option key={color.hex_value} value={color.colour_name}>
-            {color.colour_name}
+          <option key={color.hue} value={color.colorway}>
+            {color.colorway}
           </option>
         );
       });
