@@ -6,7 +6,9 @@ import { cleanData } from "../../utilities/utils"
 
 import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
-import { Route, Link } from 'react-router-dom';
+import { Error } from "../Error/Error"
+
+import { Route, Link, Redirect } from 'react-router-dom';
 
 // import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
@@ -25,14 +27,15 @@ class App extends React.Component {
           hue: "#341555"
         }
       ],
-      error: ""
+      error: "", 
+      isLoading: true,
     }
   }
 
   componentDidMount() {
     apiCall("nail_polish")
-    .then(response => this.setState({polishes: cleanData(response)}))
-    .catch(err => this.setState({error: err}))
+    .then(response => this.setState({polishes: cleanData(response), loading: false}))
+    .catch(err => this.setState({error: err, loading: false}))
   }
 
 
@@ -96,23 +99,40 @@ class App extends React.Component {
       <header>
         <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
+        {this.state.loading && !this.state.error && <h2>Loading...</h2>}
+        {this.state.error && <Error error={'Something went wrong, please try again!'} />}
+        {!this.state.loading && !this.state.error && 
+        <>
         <Route exact path="/" render={(props) => {
           return (
             <>
               {this.state.collection.length && <Collection collection={this.state.collection}/>}
             </>
           )
-        }}>
-        </Route>
+        }} 
+        />
+ 
         <Route exact path="/add-a-polish" render={(props) => {
           return (
             <>
               <Form polishes={this.state.polishes} addPolish={this.addPolish}/>
             </>
           )
-        }}>
-
-        </Route>
+        }}
+        />
+        <Route
+              exact
+              path='/page-not-found'
+              render={() => <Error error={'page not found'} />}
+        />
+        <Route
+              exact
+              path='/add-a-polish/page-not-found'
+              render={() => <Error error={'page not found'} />}
+        />
+        <Redirect to="/page-not-found" />
+        </>
+    }
     </main>
     )
   }
