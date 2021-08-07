@@ -11,8 +11,8 @@ export const Collection = ({ collection }) => {
         id={polish.id}
         image={polish.image}
         brand={polish.brand}
-        colorway={polish.colorway}
-        hue={polish.hue}
+        colorway={polish.colour_name || polish.colorway}
+        hue={polish.hex_value || polish.hue}
       />
     )
   })

@@ -15,6 +15,7 @@ export class Form extends React.Component {
       brand: "",
       colorway: "",
       hue: "",
+      image: "",
       inputStatus: true,
     }
   }
@@ -85,7 +86,8 @@ export class Form extends React.Component {
       id: Date.now(),
       brand: this.state.brand,
       colorway: this.state.colorway,
-      hue: this.state.hue
+      hue: this.state.hue,
+      image: this.state.image
     }
     this.props.addPolish(freshPolish)
   }
@@ -94,10 +96,24 @@ export class Form extends React.Component {
     this.setState({ hue: color.hex})
   }
 
+  handleChange = event => {
+    const { name, value } = event.target
+    this.setState({ [name]: value })
+  }
+
   render() {
     return (
       <section className="add-view polish-display">
         <form className="card add-border">
+          <section className="brand-inputs">
+            <input 
+              type="text"
+              name="image"
+              placeholder="Add an image"
+              value={this.state.image}
+              onChange={event => this.handleChange(event)}
+            />
+          </section>
           <section className="brand-inputs">
             <input 
             required

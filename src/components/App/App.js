@@ -31,7 +31,7 @@ class App extends React.Component {
 
  addPolish = newPolish => {
    console.log(newPolish)
-   this.setState({collection: [...this.state.collection, newPolish]})
+  //  this.setState({collection: [...this.state.collection, newPolish]})
    const foundPolish = this.state.polishes.find(polish => {
      return polish.brand === newPolish.brand
    })
@@ -46,35 +46,25 @@ class App extends React.Component {
 
    if (foundPolish) {
      const foundColor = foundPolish.colors.find(color => {
-       return color.colour === newPolish.colour_name
+       return color.colour_name === newPolish.colorway
      })
+     if (!newPolish.hue && foundColor) {
+      newPolish.hue = foundColor.hex_value
+    }
+     console.log(foundColor)
      if (!foundColor) {
-       copy[index].colors = [...this.this.state.polishes[index].colors,  
+       copy[index].colors = [...this.state.polishes[index].colors,  
         {
-          // hex_value: newPolish.hexCode,
+          hex_value: newPolish.hue,
           colour_name: newPolish.colorway
         }]
-      //  copy[index] = {...copy[index], colors: [...colors,
-      //    {
-      //     hex_value: newPolish.hexCode,
-      //     colour_name: newPolish.colorway
-      //    }
-      //  ]}
       this.setState({polishes: copy})
-       //add it to state in the right place lol
-       //set the colorway as an object with a name and hex color in the
-       //colors array in state
-      //  this.setState({polishes: [
-      //    polishes[index]: {
-              // hex_value: newPolish.hexCode,
-              // colour_name: newPolish.colorway
-      //} [...this.state.polishes[foundPolish].colors, newPolish.color]
-      //   ]})
      }
    } else {
      //update newPolish to include a colors array
      this.setState({polishes: [...this.state.polishes, newPolish]})
    }
+   this.setState({collection: [...this.state.collection, newPolish]})
  }
 
   componentDidMount() {
