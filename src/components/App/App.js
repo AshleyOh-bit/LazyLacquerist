@@ -60,6 +60,9 @@ class App extends React.Component {
         }]
       this.setState({polishes: copy})
      }
+     if (!newPolish.image) {
+        newPolish.image = foundPolish.image
+     }
    } else {
      //update newPolish to include a colors array
      this.setState({polishes: [...this.state.polishes, newPolish]})
