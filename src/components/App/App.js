@@ -30,19 +30,14 @@ class App extends React.Component {
   }
 
  addPolish = newPolish => {
-   console.log(newPolish)
-  //  this.setState({collection: [...this.state.collection, newPolish]})
    const foundPolish = this.state.polishes.find(polish => {
      return polish.brand === newPolish.brand
    })
 
-  //  console.log(foundPolish)
    const index = this.state.polishes.findIndex(foundPolish => {
      return foundPolish.brand === newPolish.brand
    })
    let copy = [...this.state.polishes]
-
-   console.log(foundPolish)
 
    if (foundPolish) {
      const foundColor = foundPolish.colors.find(color => {
@@ -51,7 +46,7 @@ class App extends React.Component {
      if (!newPolish.hue && foundColor) {
       newPolish.hue = foundColor.hex_value
     }
-     console.log(foundColor)
+
      if (!foundColor) {
        copy[index].colors = [...this.state.polishes[index].colors,  
         {
@@ -64,7 +59,6 @@ class App extends React.Component {
         newPolish.image = foundPolish.image
      }
    } else {
-     //update newPolish to include a colors array
      this.setState({polishes: [...this.state.polishes, newPolish]})
    }
    this.setState({collection: [...this.state.collection, newPolish]})

@@ -59,17 +59,14 @@ export class Form extends React.Component {
   }
 
   handleBrandChange = event => {
-    const { name, value } = event.target
-
-    this.setState({ [name]: value})
-    const filteredPolishes =  this.filterByBrand(name)
+    this.handleChange(event)
+    const filteredPolishes =  this.filterByBrand(event.target.name)
     const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts });
   }
 
   handleColorwayChange = event => {
-    const { name, value } = event.target
-    this.setState({ [name]: value})
+    this.handleChange(event)
     const colorOpts = this.buildColorOptions()
     this.setState({ colorOptions: colorOpts });
   }
@@ -81,7 +78,6 @@ export class Form extends React.Component {
   }
 
   sendPolish = (event) => {
-    //event.preventDefault()
     const freshPolish = {
       id: Date.now(),
       brand: this.state.brand,
