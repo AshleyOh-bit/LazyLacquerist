@@ -7,7 +7,21 @@ export const cleanData = data => {
       colors: currentPolish.product_colors
     }
   })
-  return freshData
+  console.log(freshData)
+
+//reduce through the array
+//inside reduce, filter through the current array's polish brands
+//return only the brands with duplicates in array
+//then, map over this array of duplicates to create a new array of all colors
+//.flat that bb
+//create a new array without duplicates using Set
+//reset the currentPolishes colors to be this new Set
+//push the currentPolish into the accumulator
+//return the reduce
+
+
+return freshData
+
 }
 
 export const checkForErr = response => {
