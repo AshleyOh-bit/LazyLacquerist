@@ -36,12 +36,16 @@ export class Form extends React.Component {
     const foundBrand = this.state.polishes.find(polish => {
       return polish.brand === chosenBrand
     })
-
-    if (foundBrand) {
+    console.log(foundBrand)
+    if (!foundBrand) {
+      console.log("luly")
+      return
+    }
+    if (foundBrand.colorway) {
       const listOptions = foundBrand.colors.map(color => {
         return (
-          <option key={color.hex_value} value={color.colour_name}>
-            {color.colour_name}
+          <option key={color.hue} value={color.colorway}>
+            {color.colorway}
           </option>
         );
       });
