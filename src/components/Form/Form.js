@@ -81,6 +81,7 @@ export class Form extends React.Component {
   sendPolish = (event) => {
     //event.preventDefault()
     const freshPolish = {
+      id: Date.now(),
       brand: this.state.brand,
       colorway: this.state.colorway
     }

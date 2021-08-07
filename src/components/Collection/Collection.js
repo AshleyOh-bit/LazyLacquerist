@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 export const Collection = ({ collection }) => {
 
-  const cards = collection.map(polish => {
+  const cards = collection.map((polish, index) => {
     return (
       <Card
-        key={polish.id}
+        key={index}
         id={polish.id}
         image={polish.image}
         brand={polish.brand}
