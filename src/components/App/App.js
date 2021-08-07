@@ -29,14 +29,21 @@ class App extends React.Component {
     }
   }
 
- addPolish = newPolish => {
-  //  const foundPolishes = this.state.polishes.filter(polish => {
-  //    return newPolish.brand !== polish.brand
-  //  })
-   const foundPolish = this.state.polishes.find(polish => {
-     return polish.brand === newPolish.brand
-   })
-   if (!foundPolish) {
+  componentDidMount() {
+    apiCall("nail_polish")
+    .then(response => this.setState({polishes: cleanData(response)}))
+    .catch(err => this.setState({error: err}))
+  }
+
+
+  findPolish = newPolish => {
+    const foundPolish = this.state.polishes.find(polish => {
+      return polish.brand === newPolish.brand
+    })
+    return foundPolish
+  }
+
+  addNewBrandToCollection = newPolish => {
     this.setState({collection: [...this.state.collection, newPolish]})
     const formattedToCollection = {
       colors: [
@@ -48,7 +55,9 @@ class App extends React.Component {
       ...newPolish
     }
     return this.setState({polishes: [...this.state.polishes, formattedToCollection]})
-   } else {
+  }
+
+  addToExistingBrandInCollection = (newPolish, foundPolish) => {
     const copy = [...this.state.polishes]
     const index = this.state.polishes.findIndex(foundPolish => {
       return foundPolish.brand === newPolish.brand
@@ -71,16 +80,16 @@ class App extends React.Component {
     if (!newPolish.image) {
       newPolish.image = foundPolish.image
     }
-  }
+  
   this.setState({collection: [...this.state.collection, newPolish]})
- }
-
-  componentDidMount() {
-    apiCall("nail_polish")
-    .then(response => this.setState({polishes: cleanData(response)}))
-    .catch(err => this.setState({error: err}))
   }
 
+  addPolish = newPolish => {
+  const foundBrand = this.findPolish(newPolish)
+   !foundBrand ? this.addNewBrandToCollection(newPolish) :
+     this.addToExistingBrandInCollection(newPolish, foundBrand)
+ 
+  }
   render() {
     return (
     <main>
