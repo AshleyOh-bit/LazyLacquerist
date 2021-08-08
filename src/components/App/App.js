@@ -7,6 +7,7 @@ import { cleanData } from "../../utilities/utils"
 import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
 import { Error } from "../Error/Error"
+import { Home } from "../Home/Home"
 
 import { Route, Link, Redirect } from 'react-router-dom';
 
@@ -99,11 +100,12 @@ class App extends React.Component {
       <header>
         <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
-        {this.state.loading && !this.state.error && <h2>Loading...</h2>}
-        {this.state.error && <Error error={'Something went wrong, please try again!'} />}
-        {!this.state.loading && !this.state.error && 
-        <>
-        <Route exact path="/" render={(props) => {
+      {this.state.loading && !this.state.error && <h2>Loading...</h2>}
+      {this.state.error && <Error error={'Something went wrong, please try again!'} />}
+      {!this.state.loading && !this.state.error && 
+      <>
+        <Route exact path="/" render={() => <Home />}/>
+        <Route exact path="/collection" render={(props) => {
           return (
             <>
               {this.state.collection.length && <Collection collection={this.state.collection}/>}
@@ -111,7 +113,6 @@ class App extends React.Component {
           )
         }} 
         />
- 
         <Route exact path="/add-a-polish" render={(props) => {
           return (
             <>
@@ -131,7 +132,7 @@ class App extends React.Component {
               render={() => <Error error={'page not found'} />}
         />
         <Redirect to="/page-not-found" />
-        </>
+      </>
     }
     </main>
     )
