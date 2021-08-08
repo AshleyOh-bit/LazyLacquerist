@@ -13,7 +13,7 @@ import { ManiMaker } from "../ManiMaker/ManiMaker"
 import { Route, Link, Redirect, Switch } from 'react-router-dom';
 
 // import nails from "../../assets/mani-icon.png"
-import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
+// import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
 
 class App extends React.Component {
   constructor() {

@@ -1,8 +1,12 @@
 import React from "react"
 import "./Error.css"
+import warning from "../../assets/warning.png"
 
 export const Error = props => {
   return (
-    <h2>{props.error}</h2>
+    <section className="errors">
+      <h2>{props.error}</h2>
+      <img className="warning" src={warning}/>
+    </section>
   )
 }

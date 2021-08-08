@@ -1,4 +1,5 @@
 export const cleanData = data => {
+  console.log(data)
   const freshData = data.map(currentPolish => {
     return {
       id: currentPolish.id,
@@ -49,9 +50,8 @@ export const cleanData = data => {
   return organizedData
 }
 
-
-
 export const checkForErr = response => {
+  console.log("response", response)
   if (!response.ok) {
     throw new Error(response.status)
   } else {

@@ -1,8 +1,10 @@
 Cypress.Commands.add("loadMain", () => {
+  cy.fixture('polishes.json').as('polishes')
   cy.visit(`http://localhost:3000/`)
-  const baseURL = "http://makeup-api.herokuapp.com/api/v1/products.json?product_type="
-  cy.intercept('GET', `${baseURL}nail_polish`, 
-      { statusCode: 200, fixture: 'polishes.json' })
+  const baseURL = "http://makeup-api.herokuapp.com/api/v1/products.json"
+  cy.intercept('GET', `${baseURL}?product_type=nail_polish`, 
+      { statusCode: 200, fixture: 'polishes' })
+    //.visit('http://localhost:3000')
 })
 
 Cypress.Commands.add("navToGen", () => {
