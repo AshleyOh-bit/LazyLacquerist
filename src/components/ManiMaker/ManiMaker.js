@@ -32,6 +32,7 @@ export class ManiMaker extends React.Component {
         acc.push(this.state.collection[currentNum])
         return acc
       }, [])
+      this.setState({ numInput: 0 })
       this.setState({ randomMani: randomPols })
     return this.createSwatches(this.state.randomMani)
   }
@@ -40,8 +41,8 @@ export class ManiMaker extends React.Component {
     const swatches = randomMani.map((polish, index) => {
       return (
         <section className="swatch" key={index}>
-          <h3>{polish.brand}: {polish.colorway}</h3>
-          <div className="hue" style={{backgroundColor: polish.hue}}></div>
+          <div className="splotch" style={{backgroundColor: polish.hue}}></div>
+          <h3 className="swatch-info">{polish.brand}: {polish.colorway}</h3>
         </section>
       )
     })
@@ -49,7 +50,6 @@ export class ManiMaker extends React.Component {
   }
 
   render() {
-    console.log(this.state.randomMani)
     return (
       <section className="mani-maker-section"> 
       <h2>Generate a random manicure</h2>
@@ -73,7 +73,9 @@ export class ManiMaker extends React.Component {
           generate!
         </button>
         <section className="mani-color-section">
-          {this.createSwatches(this.state.randomMani)}
+          <div className="format-swatches">
+            {this.createSwatches(this.state.randomMani)}
+          </div>
         </section>
       </section>
     )
