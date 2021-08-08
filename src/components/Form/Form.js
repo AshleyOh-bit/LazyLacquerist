@@ -142,6 +142,7 @@ export class Form extends React.Component {
             </datalist>
             <div
               className="add-input" 
+              data-cy="brand-button"
               style={{backgroundColor: this.state.bgBrandColor}}
             >
                 ok
@@ -163,6 +164,7 @@ export class Form extends React.Component {
             </datalist>
             <div
               className="add-input" 
+              data-cy="colorway-button"
               style={{backgroundColor: this.state.bgColorwayColor}}
             >
                 ok
