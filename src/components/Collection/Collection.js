@@ -30,5 +30,5 @@ Collection.propTypes = {
     brand: PropTypes.string.isRequired,
     colorway: PropTypes.string.isRequired,
     hue: PropTypes.string
-  }))
+  })).isRequired
 }
