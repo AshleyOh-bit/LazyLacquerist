@@ -183,7 +183,7 @@ export class Form extends React.Component {
               onChange={this.setHue}
             />
           </section>
-          <Link to="/"><button 
+          <Link to="/collection"><button 
             disabled={this.state.submitReady}
             type="submit" 
             className="add-button" 

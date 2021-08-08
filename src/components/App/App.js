@@ -7,6 +7,8 @@ import { cleanData } from "../../utilities/utils"
 import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
 import { Error } from "../Error/Error"
+import { Home } from "../Home/Home"
+import { ManiMaker } from "../ManiMaker/ManiMaker"
 
 import { Route, Link, Redirect } from 'react-router-dom';
 
@@ -29,6 +31,7 @@ class App extends React.Component {
       ],
       error: "", 
       isLoading: true,
+      // randomMani: []
     }
   }
 
@@ -83,27 +86,50 @@ class App extends React.Component {
     if (!newPolish.image) {
       newPolish.image = foundPolish.image
     }
-  
-  this.setState({collection: [...this.state.collection, newPolish]})
+    this.setState({collection: [...this.state.collection, newPolish]})
   }
 
   addPolish = newPolish => {
   const foundBrand = this.findPolish(newPolish)
    !foundBrand ? this.addNewBrandToCollection(newPolish) :
      this.addToExistingBrandInCollection(newPolish, foundBrand)
- 
   }
+
+  // generateMani = (event, num) => {
+  //   event.preventDefault()
+  //   console.log("here")
+  //   // if (!this.state.collection.length || num > this.state.collection.length) {
+  //   //   return "Please add more polishes to your stash!"
+  //   // } else {
+  //     const random = () => {
+  //       return Math.floor(Math.random() * this.state.collection.length)
+  //      }
+  //      const indeces = []
+  //      let number;
+  //      for (var i = 0; i < num; i++) {
+  //        number = random()
+  //        indeces.push(number)
+  //      }
+  //      const randomPols = indeces.reduce((acc, currentNum) => {
+  //        acc.push(this.state.collection[currentNum])
+  //        return acc
+  //      }, [])
+  //      return this.setState({ randomMani: randomPols })
+  //   //}
+  // }
+
   render() {
     return (
     <main>
       <header>
         <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
-        {this.state.loading && !this.state.error && <h2>Loading...</h2>}
-        {this.state.error && <Error error={'Something went wrong, please try again!'} />}
-        {!this.state.loading && !this.state.error && 
-        <>
-        <Route exact path="/" render={(props) => {
+      {this.state.loading && !this.state.error && <h2>Loading...</h2>}
+      {this.state.error && <Error error={'Something went wrong, please try again!'} />}
+      {!this.state.loading && !this.state.error && 
+      <>
+        <Route exact path="/" render={() => <Home />}/>
+        <Route exact path="/collection" render={(props) => {
           return (
             <>
               {this.state.collection.length && <Collection collection={this.state.collection}/>}
@@ -111,12 +137,17 @@ class App extends React.Component {
           )
         }} 
         />
- 
         <Route exact path="/add-a-polish" render={(props) => {
           return (
             <>
               <Form polishes={this.state.polishes} addPolish={this.addPolish}/>
             </>
+          )
+        }}
+        />
+        <Route exact path="/mani-maker" render={(props) => {
+          return (
+              <ManiMaker collection={this.state.collection}/>
           )
         }}
         />
@@ -131,7 +162,7 @@ class App extends React.Component {
               render={() => <Error error={'page not found'} />}
         />
         <Redirect to="/page-not-found" />
-        </>
+      </>
     }
     </main>
     )

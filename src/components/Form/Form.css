@@ -1,7 +1,6 @@
 .add-view {
   background-image: url("../../assets/teal-splatter.png");
   background-repeat: no-repeat;
-  /* height: 100%; */
   width: 100%;
   background-color: #f6f6f6;
   display: flex;

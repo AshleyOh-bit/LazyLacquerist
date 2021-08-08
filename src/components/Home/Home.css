@@ -1,0 +1,31 @@
+.home-view {
+  background-image: url("../../assets/coral-splatter.png");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+  background-color: #f6f6f6;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-home {
+  margin: 2em;
+  border: 2px solid gold;
+  background-color: white;
+}
+
+.bottle-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottle-icon {
+  margin-top: 12vh;
+  border-radius: 50%;
+  border: 2px solid gold;
+}
