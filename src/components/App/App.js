@@ -10,7 +10,7 @@ import { Error } from "../Error/Error"
 import { Home } from "../Home/Home"
 import { ManiMaker } from "../ManiMaker/ManiMaker"
 
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link, Redirect, Switch } from 'react-router-dom';
 
 // import nails from "../../assets/mani-icon.png"
 import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
@@ -127,8 +127,8 @@ class App extends React.Component {
       {this.state.loading && !this.state.error && <h2>Loading...</h2>}
       {this.state.error && <Error error={'Something went wrong, please try again!'} />}
       {!this.state.loading && !this.state.error && 
-      <>
-        <Route exact path="/" render={() => <Home />}/>
+      <Switch>
+        <Route exact path="/" render={() => {return (<Home />)}}/>
         <Route exact path="/collection" render={(props) => {
           return (
             <>
@@ -162,7 +162,7 @@ class App extends React.Component {
               render={() => <Error error={'page not found'} />}
         />
         <Redirect to="/page-not-found" />
-      </>
+      </Switch>
     }
     </main>
     )
