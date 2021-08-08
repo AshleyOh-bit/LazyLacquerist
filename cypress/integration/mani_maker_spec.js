@@ -15,11 +15,6 @@ describe("User visits the mani maker page", () => {
     cy.url().should("include", "http://localhost:3000");
   });
 
-  // it("Should tell user to add polishes to their collection before using the mani maker", () => {
-  //   cy.get("h2")
-  //     .contains("Please add polishes to your collection to use this feature!")
-  // })
-
   it("Should show the user directive text", () => {
     cy.get("h2")
       .contains("Generate a random manicure")
