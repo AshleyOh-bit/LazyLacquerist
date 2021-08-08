@@ -1,6 +1,7 @@
 import "./Collection.css"
 import { Card } from "../Card/Card"
 import { Link } from 'react-router-dom';
+import PropTypes from "prop-types"
 
 export const Collection = ({ collection }) => {
 
@@ -21,4 +22,13 @@ export const Collection = ({ collection }) => {
       </section>
     </section>
   )
+}
+
+Collection.propTypes = {
+  collection: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+    brand: PropTypes.string.isRequired,
+    colorway: PropTypes.string.isRequired,
+    hue: PropTypes.string
+  }))
 }
