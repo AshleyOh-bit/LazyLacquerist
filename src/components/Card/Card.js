@@ -1,4 +1,5 @@
 import "./Card.css"
+import PropTypes from "prop-types"
 
 export const Card = ({ image, brand, colorway, hue }) => {
 
@@ -17,4 +18,11 @@ export const Card = ({ image, brand, colorway, hue }) => {
       </section>
     </section>
   )
+}
+
+Card.propTypes = {
+  image: PropTypes.string,
+  brand: PropTypes.string,
+  colorway: PropTypes.string,
+  hue: PropTypes.string
 }
