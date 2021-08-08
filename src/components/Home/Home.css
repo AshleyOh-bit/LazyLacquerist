@@ -16,3 +16,16 @@
   border: 2px solid gold;
   background-color: white;
 }
+
+.bottle-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottle-icon {
+  margin-top: 12vh;
+  border-radius: 50%;
+  border: 2px solid gold;
+}
