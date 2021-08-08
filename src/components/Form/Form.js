@@ -2,6 +2,7 @@ import React from "react";
 import "./Form.css";
 import { Link } from 'react-router-dom';
 import { CirclePicker } from "react-color";
+import PropTypes from "prop-types"
 
 export class Form extends React.Component {
   constructor(props) {
@@ -195,4 +196,14 @@ export class Form extends React.Component {
     )
   }
 
+}
+
+Form.propTypes = {
+  collection: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+    brand: PropTypes.string.isRequired,
+    colorway: PropTypes.string.isRequired,
+    hue: PropTypes.string
+  })).isRequired,
+  //add polish
 }
