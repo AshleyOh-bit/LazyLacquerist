@@ -15,7 +15,7 @@ export const Collection = ({ collection }) => {
 
   return (
     <section className="collection">
-      <Link to="/add-a-polish"> <button className="polish-button">Add a polish</button> </Link>
+      <Link to="/add-a-polish"> <button data-cy="polish-button" className="polish-button">Add a polish</button> </Link>
       <section className="polish-display">
         {cards}
       </section>

@@ -1,10 +1,10 @@
-describe("User visits the homepage tests", () => {
+describe("User visits the mani maker page", () => {
   beforeEach(() => {
     cy.loadMain()
+    // cy.goToCollection()
+    // cy.add1ToCollection()
+    // cy.add2ToCollection()
     cy.navToGen()
-
-  //add polishes in other view?
-  //hook up fixture somehow?
   });
 
   it("Should show the user the title of page", () => {
@@ -21,7 +21,7 @@ describe("User visits the homepage tests", () => {
       .contains("Generate a random manicure")
   })
 
-  it("Should advise user on how to user the manicure generator", () => {
+  it("Should advise user on how to use the manicure generator", () => {
     cy.get("h3")
       .contains("Click the arrows to choose up to 10 colors from your collection!")
   })

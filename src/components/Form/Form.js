@@ -132,6 +132,7 @@ export class Form extends React.Component {
             placeholder="Add brand"
             list="brands"
             id="brand" 
+            data-cy="brand-input"
             value={this.state.brand} 
             onChange={event => this.handleBrandChange(event)}
             onClick={event => this.handleChange(event)}
@@ -153,6 +154,7 @@ export class Form extends React.Component {
               name="colorway" 
               list="colors"
               placeholder="Add colorway" 
+              data-cy="colorway-input"
               value={this.state.colorway} 
               onChange={event => this.handleColorwayChange(event)}
             />
@@ -171,6 +173,7 @@ export class Form extends React.Component {
               type="text"
               name="image"
               placeholder="Add Image"
+              data-cy="image-input"
               value={this.state.image}
               onChange={event => this.handleChange(event)}
               onClick={event => this.handleChange(event)}
@@ -178,6 +181,7 @@ export class Form extends React.Component {
           </section>
           <section className="color-picker">
             <CirclePicker 
+              data-cy="hue-input"
               disabled={this.state.inputStatus}
               color={this.state.hue} 
               onChange={this.setHue}
@@ -187,6 +191,7 @@ export class Form extends React.Component {
             disabled={this.state.submitReady}
             type="submit" 
             className="add-button" 
+            data-cy="form-submit"
             onClick={(event) => this.sendPolish(event)}>
               Add me!
             </button></Link>
