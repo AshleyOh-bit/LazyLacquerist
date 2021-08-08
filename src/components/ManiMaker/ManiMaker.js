@@ -9,26 +9,23 @@ export class ManiMaker extends React.Component {
       limit: props.collection.length,
       collection: props.collection,
       randomMani: [],
-      isValid: false,
+      isValid: true,
     }
   }
 
   handleChange = (event) => {
     const { name, value } = event.target
-    this.setState({ [name]: value, }, () => { this.checkValidity()
-  })
-
+      this.setState({ [name]: value }, () => {
+        this.checkValidity(value)
+      })
   }
 
-  checkValidity = () => {
-    if (this.state.numInput.includes(".") 
-        || this.state.numInput.includes("-") 
-        || this.state.numInput.includes("+")) {
-      this.setState({ isValid: false })
-    } else if (this.state.numInput > this.state.collection.length) {
-      return this.setState({ isValid: false })
+  checkValidity = (value) => {
+    const validInput = new RegExp('^[0-9]*$')
+    if (validInput.test(value) && value <= this.state.collection.length) {
+        this.setState({isValid: false })
     } else {
-      this.setState({ isValid: true })
+      this.setState({isValid: true })
     }
   }
 
@@ -49,14 +46,14 @@ export class ManiMaker extends React.Component {
       }, [])
       this.setState({ numInput: 0 })
       this.setState({ randomMani: randomPols })
-    return this.createSwatches(this.state.randomMani)
+    // return this.createSwatches(this.state.randomMani)
   }
 
   createSwatches = (randomMani) => {
     const swatches = randomMani.map((polish, index) => {
       return (
         <section className="swatch" key={index}>
-          <div className="splotch" style={{backgroundColor: polish.hue}}></div>
+          {polish.hue ? <div className="splotch" style={{backgroundColor: polish.hue}}></div> : <></>}
           <h3 className="swatch-info">{polish.brand}: {polish.colorway}</h3>
         </section>
       )
@@ -67,6 +64,9 @@ export class ManiMaker extends React.Component {
   render() {
     return (
       <section className="mani-maker-section"> 
+      {!this.state.collection.length ? <h2>Please add polishes to your collection to use this feature!</h2>
+      :
+      <>
       <h2>Generate a random manicure</h2>
       <h3>Click the arrows to choose up to 10 colors from your collection!</h3>
         <input
@@ -81,7 +81,7 @@ export class ManiMaker extends React.Component {
         />
         <button
         data-cy="generate"
-        disabled={!this.state.isValid}
+        disabled={this.state.isValid}
         className="submit-generate"
         type="submit"
         onClick={(event) => this.generateMani(event, this.state.numInput)}
@@ -93,7 +93,9 @@ export class ManiMaker extends React.Component {
             {this.createSwatches(this.state.randomMani)}
           </div>
         </section>
-      </section>
+      </>
+    }
+    </section>
     )
   }
 }

@@ -1,9 +1,8 @@
 describe("User visits the mani maker page", () => {
   beforeEach(() => {
     cy.loadMain()
-    // cy.goToCollection()
-    // cy.add1ToCollection()
-    // cy.add2ToCollection()
+    cy.goToCollection()
+    cy.add1ToCollection()
     cy.navToGen()
   });
 
@@ -15,6 +14,11 @@ describe("User visits the mani maker page", () => {
     cy.get("h1").click();
     cy.url().should("include", "http://localhost:3000");
   });
+
+  // it("Should tell user to add polishes to their collection before using the mani maker", () => {
+  //   cy.get("h2")
+  //     .contains("Please add polishes to your collection to use this feature!")
+  // })
 
   it("Should show the user directive text", () => {
     cy.get("h2")

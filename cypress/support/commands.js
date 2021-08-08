@@ -6,6 +6,8 @@ Cypress.Commands.add("loadMain", () => {
 })
 
 Cypress.Commands.add("navToGen", () => {
+  cy.get("h1")
+    .click()
   cy.get("[data-cy=maniMaker]")
       .contains("Mani-Maker")
       .click()
