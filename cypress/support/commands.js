@@ -44,6 +44,6 @@ Cypress.Commands.add("add2ToCollection", () => {
     .type("https://m.media-amazon.com/images/I/51WbjV8XAwL._SL1000_.jpg")
   cy.get('div[title*="#00bcd4"]')
     .click()
-  cy.get("[data-form-submit]")
+  cy.get("[data-cy=form-submit]")
     .click()
 })

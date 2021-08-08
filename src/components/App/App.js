@@ -20,15 +20,7 @@ class App extends React.Component {
     super()
     this.state ={
       polishes: [],
-      collection: [
-        // {
-        //   id: 0,
-        //   image: CNDblackpool,
-        //   brand: "CND",
-        //   colorway: "blackpool",
-        //   hue: "#341555"
-        // }
-      ],
+      collection: [],
       error: "", 
       isLoading: true,
       // randomMani: []

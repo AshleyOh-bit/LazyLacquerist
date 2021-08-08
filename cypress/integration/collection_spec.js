@@ -3,8 +3,6 @@ describe("User visits their collection page", () => {
   beforeEach(() => {
     cy.loadMain()
     cy.goToCollection()
-    cy.add1ToCollection()
-    cy.add2ToCollection()
   });
 
   it("Should show the user the title of page", () => {
@@ -15,6 +13,11 @@ describe("User visits their collection page", () => {
     cy.get("h1").click();
     cy.url().should("include", "http://localhost:3000");
   });
+
+  it("Should direct the user to add to their collection if there are no polishes in their collection", () => {
+    cy.get("h2")
+      .contains("Add a polish to get started!")
+  })
 
   it("Should have a button to add a polish", () => {
     cy.get("[data-cy=polish-button]")
@@ -28,11 +31,15 @@ describe("User visits their collection page", () => {
   })
 
   it("Should display polishes in the collection", () => {
+    cy.add1ToCollection()
+    cy.add2ToCollection()
     cy.get(".card")
       .should("have.length", "2")
   })
 
   it("Should display details of polishes in collection", () => {
+    cy.add1ToCollection()
+    cy.add2ToCollection()
     cy.get(".polish-image")
       .should("be.visible")
     cy.get(".brand-name")
