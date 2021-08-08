@@ -8,13 +8,28 @@ export class ManiMaker extends React.Component {
       numInput: 0,
       limit: props.collection.length,
       collection: props.collection,
-      randomMani: []
+      randomMani: [],
+      isValid: false,
     }
   }
 
   handleChange = (event) => {
     const { name, value } = event.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value, }, () => { this.checkValidity()
+  })
+
+  }
+
+  checkValidity = () => {
+    if (this.state.numInput.includes(".") 
+        || this.state.numInput.includes("-") 
+        || this.state.numInput.includes("+")) {
+      this.setState({ isValid: false })
+    } else if (this.state.numInput > this.state.collection.length) {
+      return this.setState({ isValid: false })
+    } else {
+      this.setState({ isValid: true })
+    }
   }
 
   generateMani = (event, num) => {
@@ -65,7 +80,8 @@ export class ManiMaker extends React.Component {
           onChange={event => this.handleChange(event)}
         />
         <button
-        disabled={!this.state.numInput}
+        data-cy="generate"
+        disabled={!this.state.isValid}
         className="submit-generate"
         type="submit"
         onClick={(event) => this.generateMani(event, this.state.numInput)}

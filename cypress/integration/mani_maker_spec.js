@@ -37,56 +37,74 @@ describe("User visits the homepage tests", () => {
       .should("have.value", "01")
   })
 
-  it("Should be able to click number arrows", () => {
-    cy.get("input[type='number']")
-      .type("{uparrow}")
-      .should("have.value", "01")
-  })
-
   it("Should not be able to type letters", () => {
     cy.get("input[type='number']")
       .type("hiya")
       .should("have.value", "0")
   })
 
-  // it("Should not be able to input negative numbers", () => {
-  //   cy.get("input[type='number]")
-  //     .type("-1")
-  //     // .should("have.value", "")
-  // })
+  it("Should not be able to input negative numbers", () => {
+    cy.get("input[type='number']")
+      .type("-1")
+    cy.get("[data-cy=generate]")
+      .should("be.disabled")
+  })
 
-  // it("Should not be able to input decimal numbers", () => {
-  //   cy.get("input[type='number]")
-  //     .type(".1")
-  //     // .should("have.value", "")
-  // })
+  it("Should not be able to input decimal numbers", () => {
+    cy.get("input[type='number']")
+      .type(".1")
+    cy.get("[data-cy=generate]")
+      .should("be.disabled")
+  })
 
-  // it("Should not be able to input a number larger than the current user's collection length", () => {
-  //   cy.get("input[type='number]")
-  //     .type("100")
-  //     // .should("have.value", "")
-  // })
+  it("Should not be able to input a number larger than the current user's collection length", () => {
+    cy.get("input[type='number']")
+      .type("100")
+    cy.get("[data-cy=generate]")
+      .should("be.disabled")
+  })
 
   it("button should be enabled if a number is input", () => {
-    cy.get("input[type='number]")
+    cy.get("input[type='number']")
       .type("1")
-      .should("have.value", "1")
-    cy.get(".submit-generate")
+      .should("have.value", "01")
+    cy.get("[data-cy=generate]")
       .should("be.enabled")
   })
 
   it("Should have a button to generate the manicure", () => {
-    cy.get(".submit-generate")
-    .conains("Generate!")
+    cy.get("input[type='number']")
+      .type("1")
+    cy.get("[data-cy=generate]")
+      .should("be.enabled")
   })
 
   it("Should disable the button after redirect", () => {
-    cy.get(".submit-generate")
-    .should("be.disabled")
+    cy.get("[data-cy=generate]")
+      .should("be.disabled")
   })
 
   it("Should contain a display area for the generated polishes", () => {
     cy.get(".mani-color-section")
+  })
+
+  it("Should display polishes from the collection when given a correct input", () => {
+    cy.get("input[type='number']")
+      .type("1")
+    cy.get("[data-cy=generate]")
+      .click()
+    cy.get(".swatch-info")
+      .contains("CND: blackpool")
+  })
+
+  it("Should display nothing if 0 is input", () => {
+    cy.get("input[type='number']")
+      .type("0")
+    cy.get("[data-cy=generate]")
+      .click()
+    cy.get(".mani-color-section")
+    cy.get(".swatch-info")
+      .should("not.exist")
   })
   
 });
