@@ -1,4 +1,5 @@
 import "./Card.css"
+import PropTypes from "prop-types"
 
 export const Card = ({ image, brand, colorway, hue }) => {
 
@@ -9,7 +10,7 @@ export const Card = ({ image, brand, colorway, hue }) => {
       </section>
       <section className="polish-details">
         <h3 className="brand-name">Brand: {brand}</h3>
-        {colorway && <h3 className="colorway">Colorway: {colorway}</h3>}
+        <h3 className="colorway">Colorway: {colorway}</h3>
         {hue && <div className="hue-display">
                   <h3>Hue: </h3>
                   <div className="hue" style={{backgroundColor: hue}}></div>
@@ -17,4 +18,11 @@ export const Card = ({ image, brand, colorway, hue }) => {
       </section>
     </section>
   )
+}
+
+Card.propTypes = {
+  image: PropTypes.string,
+  brand: PropTypes.string.isRequired,
+  colorway: PropTypes.string.isRequired,
+  hue: PropTypes.string
 }
