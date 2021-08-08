@@ -205,5 +205,5 @@ Form.propTypes = {
     colorway: PropTypes.string.isRequired,
     hue: PropTypes.string
   })).isRequired,
-  //add polish
+  addPolish: PropTypes.func.isRequired
 }

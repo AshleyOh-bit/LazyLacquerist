@@ -90,5 +90,4 @@ ManiMaker.propTypes = {
     colorway: PropTypes.string.isRequired,
     hue: PropTypes.string
   })).isRequired,
-  //add polish
 }
