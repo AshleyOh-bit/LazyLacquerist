@@ -1,0 +1,34 @@
+{
+  "polishes": [
+    {
+      "id": 1,
+      "brand": "maybelline",
+      "image": "link",
+      "colors": ["blue", "red", "yellow"]
+    },
+    {
+      "id": 2,
+      "brand": "dior",
+      "image": "link",
+      "colors": ["orange", "pink", "green", "red"]
+    },  
+    {
+      "id": 3,
+      "brand": "CND",
+      "image": "link",
+      "colors": ["black", "cream"]
+    }, 
+    {
+      "id": 4,
+      "brand": "wet n wild",
+      "image": "link",
+      "colors": ["violet", "cyan", "yellow", "blue"]
+    },  
+    {
+      "id": 5,
+      "brand": "OPI",
+      "image": "link",
+      "colors": ["everybunny", "sleepytime"]
+    }
+  ]
+}
