@@ -1,0 +1,32 @@
+.mani-maker-section {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../../assets/black-watercolor-splatter.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f6f6f6;
+}
+
+.number-input {
+  border: 2px solid #15a584;
+  width: 50%;
+}
+
+input[type="number"] {
+  text-align: center;
+}
+
+.mani-color-section {
+  background: white;
+  border-radius: 50%;
+  height: 50vh;
+  width: 70vw;
+  margin-top: 2em;
+  border: 2px solid #fba5a9;
+}
+
+.submit-generate {
+  background-color: gold;
+}

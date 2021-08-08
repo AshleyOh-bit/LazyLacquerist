@@ -8,6 +8,7 @@ import { Collection } from "../Collection/Collection"
 import { Form } from "../Form/Form"
 import { Error } from "../Error/Error"
 import { Home } from "../Home/Home"
+import { ManiMaker } from "../ManiMaker/ManiMaker"
 
 import { Route, Link, Redirect } from 'react-router-dom';
 
@@ -118,6 +119,12 @@ class App extends React.Component {
             <>
               <Form polishes={this.state.polishes} addPolish={this.addPolish}/>
             </>
+          )
+        }}
+        />
+        <Route exact path="/mani-maker" render={(props) => {
+          return (
+              <ManiMaker />
           )
         }}
         />
