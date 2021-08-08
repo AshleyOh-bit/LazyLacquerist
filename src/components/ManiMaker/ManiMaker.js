@@ -37,9 +37,9 @@ export class ManiMaker extends React.Component {
   }
 
   createSwatches = (randomMani) => {
-    const swatches = randomMani.map(polish => {
+    const swatches = randomMani.map((polish, index) => {
       return (
-        <section className="swatch">
+        <section className="swatch" key={index}>
           <h3>{polish.brand}: {polish.colorway}</h3>
           <div className="hue" style={{backgroundColor: polish.hue}}></div>
         </section>
