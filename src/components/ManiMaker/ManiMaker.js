@@ -53,7 +53,7 @@ export class ManiMaker extends React.Component {
     return (
       <section className="mani-maker-section"> 
       <h2>Generate a random manicure</h2>
-      <h3>Choose up to 10 colors from your collection!</h3>
+      <h3>Click the arrows to choose up to 10 colors from your collection!</h3>
         <input
           className="number-input"
           type="number"

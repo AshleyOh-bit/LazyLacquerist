@@ -34,7 +34,7 @@ describe("User visits the homepage tests", () => {
 
   it("Should redirect user to the mani maker if the mani maker button is clicked", () => {
     cy.get("[data-cy=maniMaker]")
-      // .contains("Mani-Maker")
+      .contains("Mani-Maker")
       .click()
     cy.url().should("include", "http://localhost:3000/mani-maker");
   })
