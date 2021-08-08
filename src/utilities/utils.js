@@ -46,7 +46,6 @@ export const cleanData = data => {
     newData.colors = cleanColors
     return newData
   })
-  console.log(organizedData)
   return organizedData
 }
 
