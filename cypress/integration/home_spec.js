@@ -13,7 +13,7 @@ describe("User visits the homepage tests", () => {
   });
 
   it("Should display two buttons", () => {
-    cy.get("button")
+    cy.get(".nav-home")
       .should("have.length", 2)
   })
 
@@ -33,14 +33,14 @@ describe("User visits the homepage tests", () => {
   })
 
   it("Should redirect user to the mani maker if the mani maker button is clicked", () => {
-    cy.get("#maniMaker")
-      .contains("Mani-Maker")
+    cy.get("[data-cy=maniMaker]")
+      // .contains("Mani-Maker")
       .click()
     cy.url().should("include", "http://localhost:3000/mani-maker");
   })
     
   it("Should redirect user to their collection if the collection button is clicked", () => {
-    cy.get("#myColl")
+    cy.get("[data-cy=myColl]")
       .contains("My Collection")
       .click()
     cy.url().should("include", "http://localhost:3000/collection");
