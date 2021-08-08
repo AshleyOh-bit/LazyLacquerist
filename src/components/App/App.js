@@ -21,13 +21,13 @@ class App extends React.Component {
     this.state ={
       polishes: [],
       collection: [
-        {
-          id: 0,
-          image: CNDblackpool,
-          brand: "CND",
-          colorway: "blackpool",
-          hue: "#341555"
-        }
+        // {
+        //   id: 0,
+        //   image: CNDblackpool,
+        //   brand: "CND",
+        //   colorway: "blackpool",
+        //   hue: "#341555"
+        // }
       ],
       error: "", 
       isLoading: true,
@@ -132,7 +132,7 @@ class App extends React.Component {
         <Route exact path="/collection" render={(props) => {
           return (
             <>
-              {this.state.collection.length && <Collection collection={this.state.collection}/>}
+              <Collection collection={this.state.collection}/>
             </>
           )
         }} 

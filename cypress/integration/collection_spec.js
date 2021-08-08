@@ -4,7 +4,7 @@ describe("User visits their collection page", () => {
     cy.loadMain()
     cy.goToCollection()
     cy.add1ToCollection()
-    // cy.add2ToCollection()
+    cy.add2ToCollection()
   });
 
   it("Should show the user the title of page", () => {
@@ -34,7 +34,7 @@ describe("User visits their collection page", () => {
 
   it("Should display details of polishes in collection", () => {
     cy.get(".polish-image")
-      .contains("img")
+      .should("be.visible")
     cy.get(".brand-name")
       .contains("Brand: CND")
     cy.get(".colorway")
@@ -44,6 +44,3 @@ describe("User visits their collection page", () => {
   })
 
 });
-
-
-//should display polish collection 

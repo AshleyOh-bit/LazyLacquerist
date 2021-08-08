@@ -15,7 +15,7 @@ Cypress.Commands.add("navToGen", () => {
 Cypress.Commands.add("goToCollection", () => {
   cy.get("[data-cy=myColl]")
     .click()
-    //cy.url().should("include", "http://localhost:3000/collection");
+  cy.url().should("include", "http://localhost:3000/collection");
 })
 
 Cypress.Commands.add("add1ToCollection", () => {
