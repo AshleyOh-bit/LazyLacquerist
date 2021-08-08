@@ -3,7 +3,7 @@ import "./Home.css"
 import { Link } from "react-router-dom"
 import bottle from "../../assets/bottle-icon.png"
 
-export const Home = props => {
+export const Home = () => {
   return (
     <section className="home-view">
       <section className="buttons">

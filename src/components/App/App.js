@@ -31,6 +31,7 @@ class App extends React.Component {
       ],
       error: "", 
       isLoading: true,
+      // randomMani: []
     }
   }
 
@@ -85,16 +86,38 @@ class App extends React.Component {
     if (!newPolish.image) {
       newPolish.image = foundPolish.image
     }
-  
-  this.setState({collection: [...this.state.collection, newPolish]})
+    this.setState({collection: [...this.state.collection, newPolish]})
   }
 
   addPolish = newPolish => {
   const foundBrand = this.findPolish(newPolish)
    !foundBrand ? this.addNewBrandToCollection(newPolish) :
      this.addToExistingBrandInCollection(newPolish, foundBrand)
- 
   }
+
+  // generateMani = (event, num) => {
+  //   event.preventDefault()
+  //   console.log("here")
+  //   // if (!this.state.collection.length || num > this.state.collection.length) {
+  //   //   return "Please add more polishes to your stash!"
+  //   // } else {
+  //     const random = () => {
+  //       return Math.floor(Math.random() * this.state.collection.length)
+  //      }
+  //      const indeces = []
+  //      let number;
+  //      for (var i = 0; i < num; i++) {
+  //        number = random()
+  //        indeces.push(number)
+  //      }
+  //      const randomPols = indeces.reduce((acc, currentNum) => {
+  //        acc.push(this.state.collection[currentNum])
+  //        return acc
+  //      }, [])
+  //      return this.setState({ randomMani: randomPols })
+  //   //}
+  // }
+
   render() {
     return (
     <main>
@@ -124,7 +147,7 @@ class App extends React.Component {
         />
         <Route exact path="/mani-maker" render={(props) => {
           return (
-              <ManiMaker />
+              <ManiMaker collection={this.state.collection}/>
           )
         }}
         />
