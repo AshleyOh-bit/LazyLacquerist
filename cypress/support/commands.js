@@ -1,10 +1,17 @@
 Cypress.Commands.add("loadMain", () => {
   cy.fixture('polishes.json').as('polishes')
-    cy.intercept('GET', `http://makeup-api.herokuapp.com/api/v/products.json?product_type=nail_polish`, 
-      { statusCode: 200, 
-        body: {
-        fixture: 'polishes'
-      }
+  const baseURL = "http://makeup-api.herokuapp.com/api/v1/products.json"
+    cy.intercept('GET', `${baseURL}?product_type=nail_polish`, 
+      { 
+        ok: true,
+        redirected: false,
+        status: 200, 
+        statusTest: "OK",
+        type: "cors",
+        url: "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=nail_polish"
+      //   body: {
+      //   fixture: 'polishes'
+      // }
     })
     cy.visit('http://localhost:3000')
 })

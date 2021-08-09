@@ -50,6 +50,7 @@ export const cleanData = data => {
 }
 
 export const checkForErr = response => {
+  console.log(response)
   if (!response.ok) {
     throw new Error(response.status)
   } else {

@@ -1,6 +1,6 @@
 describe("Sad path user flows", () => {
   it("Should tell the user if a network error has occurred", () => {
-  const baseURL = "http://makeup-api.herokuapp.com/api/v/products.json"
+  const baseURL = "http://makeup-api.herokuapp.com/api/v1/products.json"
   cy.intercept('GET', `${baseURL}?product_type=nail_polish`, 
       { statusCode: 404, body: 'error' })
     .visit('http://localhost:3000')

@@ -1,6 +1,7 @@
 describe("User visits the homepage tests", () => {
   beforeEach(() => {
     cy.loadMain()
+
   });
 
   it("Should show the user the title of page", () => {
