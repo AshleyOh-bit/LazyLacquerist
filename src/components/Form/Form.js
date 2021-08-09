@@ -3,96 +3,51 @@ import "./Form.css";
 import { Link } from 'react-router-dom';
 import { CirclePicker } from "react-color";
 import PropTypes from "prop-types"
+import { Options } from "../Options/Options"
 
 export class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       polishes: props.polishes,
-      filtPolishs: [],
-      filtColors: [],
-      brandOptions: [],
-      colorOptions: [],
+      filtPolishes: [],
       brand: "",
       colorway: "",
       hue: "",
       image: "",
-      bgBrandColor: "",
-      bgColorwayColor: "",
+      bgbrandColor: "",
+      bgcolorwayColor: "",
       submitReady: true
     }
   }
 
-  buildBrandOptions = (location, name) => {
-    const listOptions = location.map(polish => {
-      return (
-        <option key={polish.id} value={polish[name]}>
-          {polish[name]}
-        </option>
-      );
-    });
-    return listOptions
-  }
-
-  buildColorOptions = () => {
-    const chosenBrand = this.state.brand
-    const foundBrand = this.state.polishes.find(polish => {
-      return polish.brand === chosenBrand
-    })
-
-    if (!foundBrand) {
-      return
-    } else {
-      const listOptions = foundBrand.colors.map(color => {
-        return (
-          <option key={color.hue} value={color.colorway}>
-            {color.colorway}
-          </option>
-        );
-      });
-      return listOptions
-    } 
-  }
-
-  filterByBrand = name => {
-    const lowerCase = this.state[name].toLowerCase()
+  filterByBrand = () => {
+    const lowerCase = this.state.brand.toLowerCase()
     const filtered = this.state.polishes.filter(polish => {
-      const polishCase = polish[name].toLowerCase()
+      const polishCase = polish.brand.toLowerCase()
       return polishCase.includes(lowerCase)
     })
+    this.setState({ filtPolishes: filtered })
     return filtered
   }
 
   handleBrandChange = event => {
     this.validateInputs()
     this.handleChange(event)
-    const filteredPolishes =  this.filterByBrand(event.target.name)
-    const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
-    this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts }, () => {
-      this.handleClick(event, "bgBrandColor", "brand")
-    });
+    this.filterByBrand()
   }
 
-  handleColorwayChange = event => {
-    this.handleChange(event)
-    const colorOpts = this.buildColorOptions()
-    this.setState({ colorOptions: colorOpts }, () => { this.handleClick(event, "bgColorwayColor", "colorway")
-  });
-  }
-
-  handleClick = (event, buttonName, input) => {
+  changeButton = (buttonName, input) => {
     this.validateInputs()
-    event.preventDefault()
     if (!this.state[input]) {
       this.setState({ [buttonName]: "" })
     }
-
     if (this.state[input]) {
       this.setState({ [buttonName]: "#15a584" })
     }
   }
 
-  sendPolish = (event) => {
+  sendPolish = () => {
     const freshPolish = {
       id: Date.now(),
       brand: this.state.brand,
@@ -109,7 +64,9 @@ export class Form extends React.Component {
 
   handleChange = event => {
     const { name, value } = event.target
-    this.setState({ [name]: value })
+    this.setState({ [name]: value }, () => {
+      this.changeButton(`bg${name}Color`, name)
+    })
   }
 
   validateInputs = () => {
@@ -139,12 +96,12 @@ export class Form extends React.Component {
             onClick={event => this.handleChange(event)}
             />
             <datalist 
-              id="brands">{this.state.brandOptions}
+              id="brands">{<Options filteredPolishes={this.state.filtPolishes}/>}
             </datalist>
             <div
               className="add-input" 
               data-cy="brand-button"
-              style={{backgroundColor: this.state.bgBrandColor}}
+              style={{backgroundColor: this.state.bgbrandColor}}
             >
                 ok
             </div>
@@ -158,15 +115,15 @@ export class Form extends React.Component {
               placeholder="Add colorway" 
               data-cy="colorway-input"
               value={this.state.colorway} 
-              onChange={event => this.handleColorwayChange(event)}
+              onChange={event => this.handleBrandChange(event)}
             />
             <datalist 
-              id="colors">{this.state.colorOptions}
+              id="colors">{<Options brand={this.state.brand} polishes={this.state.polishes}/>}
             </datalist>
             <div
               className="add-input" 
               data-cy="colorway-button"
-              style={{backgroundColor: this.state.bgColorwayColor}}
+              style={{backgroundColor: this.state.bgcolorwayColor}}
             >
                 ok
             </div>
@@ -202,7 +159,6 @@ export class Form extends React.Component {
       </section>
     )
   }
-
 }
 
 Form.propTypes = {

@@ -1,6 +1,7 @@
 import React from "react"
 import "./ManiMaker.css"
 import PropTypes from "prop-types"
+import { Swatch } from "../Swatch/Swatch"
 
 export class ManiMaker extends React.Component {
   constructor(props) {
@@ -47,19 +48,6 @@ export class ManiMaker extends React.Component {
       }, [])
       this.setState({ numInput: 0 })
       this.setState({ randomMani: randomPols })
-    // return this.createSwatches(this.state.randomMani)
-  }
-
-  createSwatches = (randomMani) => {
-    const swatches = randomMani.map((polish, index) => {
-      return (
-        <section className="swatch" key={index}>
-          {polish.hue ? <div className="splotch" style={{backgroundColor: polish.hue}}></div> : <></>}
-          <h3 className="swatch-info">{polish.brand}: {polish.colorway}</h3>
-        </section>
-      )
-    })
-    return swatches
   }
 
   render() {
@@ -91,7 +79,7 @@ export class ManiMaker extends React.Component {
         </button>
         <section className="mani-color-section">
           <div className="format-swatches">
-            {this.createSwatches(this.state.randomMani)}
+            <Swatch randomMani={this.state.randomMani}/>
           </div>
         </section>
       </>
