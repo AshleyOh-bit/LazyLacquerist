@@ -1,11 +1,10 @@
 .card {
-  /* border: 1px solid #f85f60; */
   border-radius: 3em;
-  padding: 2%;
+  padding: 3%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 60%;
+  height: fit-content;
   background-color: white;
 }
 
@@ -41,10 +40,20 @@
   border: 1px solid #f85f60;
 }
 
-img {
+.brand-photo {
   height: 100%;
   width: auto;
   overflow: hidden;
   object-fit: cover;
   border-radius: 3em;
+}
+
+.colorway {
+  width: 75%
+}
+
+@media screen and (max-width: 400px) {
+  .card {
+    padding: 0;
+  }
 }

@@ -7,18 +7,20 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  height: 91vh;
+  height: 100vh;
 }
 
 .add-border {
   border: 1px solid black;
   margin-top: 2em;
-  width: 45%;
+  border-radius: 3em;
+  padding: 2%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  justify-content: center;
-  height: fit-content;
-  width: fit-content;
+  height: auto;
+  background-color: white;
 }
 
 input {
@@ -77,4 +79,12 @@ input {
 .color-picker, .brand-inputs {
   margin-left: 2.6em;
   margin-right: 2.6em;
+}
+
+@media screen and (max-width: 400px) {
+  .add-border {
+    width:90%;
+    margin-top: .5em;
+    margin-left: .5em;
+  }
 }

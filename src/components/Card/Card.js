@@ -6,7 +6,7 @@ export const Card = ({ image, brand, colorway, hue }) => {
   return (
     <section className="card collection-border">
       <section className="polish-image">
-        {image && <img src={image} alt={ `${brand} nail polish in ${colorway}`}/>}
+        {image && <img className="brand-photo" src={image} alt={ `${brand} nail polish in ${colorway}`}/>}
       </section>
       <section className="polish-details">
         <h3 className="brand-name">Brand: {brand}</h3>

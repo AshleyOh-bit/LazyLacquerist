@@ -89,7 +89,7 @@ class App extends React.Component {
     return (
     <main>
       <header>
-        <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
+        <Link to="/" style={{textDecoration: "none"}}> <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
       {this.state.loading && !this.state.error && <><h2>Loading...</h2><img src={loading} alt="Loading"/></>}
       {this.state.error && <Error error={'Something went wrong, please try again!'} />}
