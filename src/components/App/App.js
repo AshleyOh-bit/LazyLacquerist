@@ -10,24 +10,16 @@ import { Error } from "../Error/Error"
 import { Home } from "../Home/Home"
 import { ManiMaker } from "../ManiMaker/ManiMaker"
 
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Link, Redirect, Switch } from 'react-router-dom';
 
-import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
+import loading from "../../assets/loading.png"
 
 class App extends React.Component {
   constructor() {
     super()
     this.state ={
       polishes: [],
-      collection: [
-        {
-          id: 0,
-          image: CNDblackpool,
-          brand: "CND",
-          colorway: "blackpool",
-          hue: "#341555"
-        }
-      ],
+      collection: [],
       error: "", 
       isLoading: true,
     }
@@ -99,15 +91,15 @@ class App extends React.Component {
       <header>
         <Link to="/" > <h1 className="title">The Lazy Lacquerist</h1> </Link>
       </header>
-      {this.state.loading && !this.state.error && <h2>Loading...</h2>}
+      {this.state.loading && !this.state.error && <><h2>Loading...</h2><img src={loading} alt="Loading"/></>}
       {this.state.error && <Error error={'Something went wrong, please try again!'} />}
       {!this.state.loading && !this.state.error && 
-      <>
-        <Route exact path="/" render={() => <Home />}/>
+      <Switch>
+        <Route exact path="/" render={() => {return (<Home />)}}/>
         <Route exact path="/collection" render={(props) => {
           return (
             <>
-              {this.state.collection.length && <Collection collection={this.state.collection}/>}
+              <Collection collection={this.state.collection}/>
             </>
           )
         }} 
@@ -137,7 +129,7 @@ class App extends React.Component {
               render={() => <Error errorMessage={'page not found'} />}
         />
         <Redirect to="/page-not-found" />
-      </>
+      </Switch>
     }
     </main>
     )

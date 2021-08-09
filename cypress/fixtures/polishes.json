@@ -1,0 +1,34 @@
+{
+  "polishes": [
+    {
+      "id": 1,
+      "brand": "maybelline",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBROslFIeheA9L7h1ZAjUAGQwB9hTgQsX86Q&usqp=CAU",
+      "colors": ["blue", "red", "yellow"]
+    },
+    {
+      "id": 2,
+      "brand": "dior",
+      "image": "https://www.xeonbd.com/blog/http-response-status-codes/",
+      "colors": ["orange", "pink", "green", "red"]
+    },  
+    {
+      "id": 3,
+      "brand": "CND",
+      "image": "https://m.media-amazon.com/images/I/71ZDQz2TO5S._SX522_.jpg",
+      "colors": ["black", "cream"]
+    }, 
+    {
+      "id": 4,
+      "brand": "wet n wild",
+      "image": "https://www.wetnwildbeauty.com/media/catalog/product/1/1/1111936_2_1.jpg",
+      "colors": ["violet", "cyan", "yellow", "blue"]
+    },  
+    {
+      "id": 5,
+      "brand": "OPI",
+      "image": "https://static.beautytocare.com/media/catalog/product/cache/global/image/650x650/85e4522595efc69f496374d01ef2bf13/o/p/opi-nail-lacquer-i-m-an-extra-15ml.jpg",
+      "colors": ["everybunny", "sleepytime"]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "collection": [
+    {
+      "id": 10,
+      "brand": "maybelline",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBROslFIeheA9L7h1ZAjUAGQwB9hTgQsX86Q&usqp=CAU",
+      "colorway": "heaven's gate",
+      "hue": "#fba5a9"
+    },
+    {
+      "id": 2,
+      "brand": "dior",
+      "image": "https://www.xeonbd.com/blog/http-response-status-codes/",
+      "colorway": "the bowery",
+      "hue": "#90fac2"
+    },  
+    {
+      "id": 3,
+      "brand": "CND",
+      "image": "https://m.media-amazon.com/images/I/71ZDQz2TO5S._SX522_.jpg",
+      "colorway": "next day soiree",
+      "hue": "#e0505f"
+    }
+  ]
+}
