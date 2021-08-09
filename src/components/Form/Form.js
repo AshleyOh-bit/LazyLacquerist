@@ -9,8 +9,7 @@ export class Form extends React.Component {
     super(props)
     this.state = {
       polishes: props.polishes,
-      filtPolishs: [],
-      filtColors: [],
+      filtPolishse: [],
       brandOptions: [],
       colorOptions: [],
       brand: "",
@@ -39,7 +38,6 @@ export class Form extends React.Component {
     const foundBrand = this.state.polishes.find(polish => {
       return polish.brand === chosenBrand
     })
-
     if (!foundBrand) {
       return
     } else {
@@ -69,30 +67,28 @@ export class Form extends React.Component {
     const filteredPolishes =  this.filterByBrand(event.target.name)
     const brandOpts = this.buildBrandOptions(filteredPolishes, "brand")
     this.setState({ filtPolishes: filteredPolishes, brandOptions: brandOpts }, () => {
-      this.handleClick(event, "bgBrandColor", "brand")
+      this.changeButton("bgBrandColor", "brand")
     });
   }
 
   handleColorwayChange = event => {
     this.handleChange(event)
     const colorOpts = this.buildColorOptions()
-    this.setState({ colorOptions: colorOpts }, () => { this.handleClick(event, "bgColorwayColor", "colorway")
+    this.setState({ colorOptions: colorOpts }, () => { this.changeButton("bgColorwayColor", "colorway")
   });
   }
 
-  handleClick = (event, buttonName, input) => {
+  changeButton = (buttonName, input) => {
     this.validateInputs()
-    event.preventDefault()
     if (!this.state[input]) {
       this.setState({ [buttonName]: "" })
     }
-
     if (this.state[input]) {
       this.setState({ [buttonName]: "#15a584" })
     }
   }
 
-  sendPolish = (event) => {
+  sendPolish = () => {
     const freshPolish = {
       id: Date.now(),
       brand: this.state.brand,

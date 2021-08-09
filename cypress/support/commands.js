@@ -8,10 +8,10 @@ Cypress.Commands.add("loadMain", () => {
         status: 200, 
         statusTest: "OK",
         type: "cors",
-        url: "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=nail_polish"
-      //   body: {
-      //   fixture: 'polishes'
-      // }
+        url: "http://makeup-api.herokuapp.com/api/v1/products.json?product_type=nail_polish",
+        body: {
+        fixture: 'polishes'
+      }
     })
     cy.visit('http://localhost:3000')
 })
