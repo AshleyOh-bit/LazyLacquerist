@@ -4,15 +4,11 @@
   height: 100%;
   width: 100%;
   background-color: #f6f6f6;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .polish-display {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20vh, 38vh));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 5%;
   height: 105vh;
   margin-left: 2em;
@@ -34,6 +30,11 @@ button {
 
 .polish-button {
   background-color: #15a584;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
 button:hover {

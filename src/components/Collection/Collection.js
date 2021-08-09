@@ -15,7 +15,9 @@ export const Collection = ({ collection }) => {
 
   return (
     <section className="collection">
-      <Link to="/add-a-polish"> <button data-cy="polish-button" className="polish-button">Add a polish</button> </Link>
+      <section className="button-container">
+        <Link to="/add-a-polish"> <button data-cy="polish-button" className="polish-button">Add a polish</button> </Link>
+      </section>
       {!collection.length ? <h2>Add a polish to get started!</h2> : <section className="polish-display">
          {cards}
       </section>}
