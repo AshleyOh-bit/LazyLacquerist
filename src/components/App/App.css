@@ -6,10 +6,10 @@ html, main {
 
 header {
   border-bottom: 3px dashed black;
+  text-transform: uppercase;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-transform: uppercase;
   font-style: italic;
 }
 
@@ -17,4 +17,18 @@ header {
   height: 500px;
   width: auto;
 }
+.title {
+  border-bottom: 2px solid transparent;
+  color: black;
+}
 
+.title:hover {
+  border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    margin-left: 20vw;
+    margin-right: auto
+  }
+}
