@@ -11,8 +11,8 @@ export class Form extends React.Component {
     this.state = {
       polishes: props.polishes,
       filtPolishes: [],
-      brandOptions: [],
-      colorOptions: [],
+      //brandOptions: [],
+      //colorOptions: [],
       brand: "",
       colorway: "",
       hue: "",
@@ -23,29 +23,29 @@ export class Form extends React.Component {
     }
   }
 
-  buildColorOptions = () => {
-    const chosenBrand = this.state.brand
-    const foundBrand = this.state.polishes.find(polish => {
-      return polish.brand === chosenBrand
-    })
-    if (!foundBrand) {
-      return
-    } else {
-      const listOptions = foundBrand.colors.map(color => {
-        return (
-          <option key={color.hue} value={color.colorway}>
-            {color.colorway}
-          </option>
-        );
-      });
-      return listOptions
-    } 
-  }
+  // buildColorOptions = () => {
+  //   const chosenBrand = this.state.brand
+  //   const foundBrand = this.state.polishes.find(polish => {
+  //     return polish.brand === chosenBrand
+  //   })
+  //   if (!foundBrand) {
+  //     return
+  //   } else {
+  //     const listOptions = foundBrand.colors.map(color => {
+  //       return (
+  //         <option key={color.hue} value={color.colorway}>
+  //           {color.colorway}
+  //         </option>
+  //       );
+  //     });
+  //     return listOptions
+  //   } 
+  // }
 
-  filterByBrand = name => {
-    const lowerCase = this.state[name].toLowerCase()
+  filterByBrand = () => {
+    const lowerCase = this.state.brand.toLowerCase()
     const filtered = this.state.polishes.filter(polish => {
-      const polishCase = polish[name].toLowerCase()
+      const polishCase = polish.brand.toLowerCase()
       return polishCase.includes(lowerCase)
     })
     this.setState({ filtPolishes: filtered })
@@ -55,19 +55,18 @@ export class Form extends React.Component {
   handleBrandChange = event => {
     this.validateInputs()
     this.handleChange(event)
-    const filteredPolishes =  this.filterByBrand(event.target.name)
+    this.filterByBrand()
   }
 
-  handleColorwayChange = event => {
-    this.handleChange(event)
-    const colorOpts = this.buildColorOptions()
-    this.setState({ colorOptions: colorOpts }, () => { this.changeButton("bgColorwayColor", "colorway")
-  });
-  }
+  // handleColorwayChange = event => {
+  //   this.validateInputs()
+  //   this.handleChange(event)
+  //   //const colorOpts = this.buildColorOptions()
+  //   //this.setState({ colorOptions: colorOpts }, () => { this.changeButton("bgColorwayColor", "colorway")
+  // //});
+  // }
 
   changeButton = (buttonName, input) => {
-    console.log(buttonName)
-    console.log(input)
     this.validateInputs()
     if (!this.state[input]) {
       this.setState({ [buttonName]: "" })
@@ -145,10 +144,11 @@ export class Form extends React.Component {
               placeholder="Add colorway" 
               data-cy="colorway-input"
               value={this.state.colorway} 
-              onChange={event => this.handleColorwayChange(event)}
+              onChange={event => this.handleBrandChange(event)}
             />
             <datalist 
-              id="colors">{this.state.colorOptions}
+              // id="colors">{this.state.colorOptions}
+              id="colors">{<Options polishes={this.state.polishes} brand={this.state.brand}/>}
             </datalist>
             <div
               className="add-input" 
