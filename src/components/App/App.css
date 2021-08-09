@@ -29,6 +29,8 @@ header {
 @media screen and (max-width: 550px) {
   .title {
     margin-left: 20vw;
-    margin-right: auto
+    margin-right: auto;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
   }
 }

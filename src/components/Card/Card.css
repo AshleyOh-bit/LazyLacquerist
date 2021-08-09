@@ -48,3 +48,9 @@
   object-fit: cover;
   border-radius: 3em;
 }
+
+@media screen and (max-width: 400px) {
+  .card {
+    padding: 0;
+  }
+}

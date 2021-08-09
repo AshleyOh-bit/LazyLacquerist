@@ -8,7 +8,7 @@ export const Home = () => {
     <section className="home-view">
       <section className="greeting">
         <h2>Welcome!</h2> 
-        <h3>Would you like to generate a new mani palette or see your collection?</h3>
+        <h3 className="directive">Would you like to generate a new mani palette or see your collection?</h3>
       </section>
       <section className="buttons">
         <Link to="/mani-maker"> <button data-cy="maniMaker" className="nav-home">Mani-Maker</button> </Link>

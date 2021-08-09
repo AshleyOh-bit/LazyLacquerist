@@ -40,10 +40,18 @@
   margin-right: 2em;
 }
 
+h2 {
+  font-size: 2em;
+}
+
+.directive {
+  font-size: 1.5em;
+}
+
 @media screen and (max-width: 525px) {
   .bottle-icon {
     width: 70%;
-    margin-top: 5vh;
+    margin-top: 1vh;
   }
   .buttons {
     flex-direction: column;
@@ -51,5 +59,13 @@
   }
   .nav-home {
     margin: .5em;
+  }
+  h2 {
+    font-size: 1.5em;
+    margin: .25em;
+  }
+  .directive {
+    font-size: 1em;
+    margin: .25em;
   }
 }

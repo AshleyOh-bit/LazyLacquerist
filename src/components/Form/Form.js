@@ -79,7 +79,7 @@ export class Form extends React.Component {
 
   render() {
     return (
-      <section className="add-view polish-display">
+      <section className="add-view">
         <form className="card add-border">
           <h2>Add a polish!</h2>
           <section className="brand-inputs">

@@ -13,7 +13,6 @@
 .add-border {
   border: 1px solid black;
   margin-top: 2em;
-  width: 45%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,4 +76,12 @@ input {
 .color-picker, .brand-inputs {
   margin-left: 2.6em;
   margin-right: 2.6em;
+}
+
+@media screen and (max-width: 400px) {
+  .add-border {
+    width:90%;
+    margin-top: .5em;
+    margin-left: .5em;
+  }
 }
