@@ -12,3 +12,11 @@ export const Swatch = ({ randomMani }) => {
   })
   return swatches
 }
+
+Swatch.propTypes = {
+  randomMani: PropTypes.arrayOf(PropTypes.shape({
+    brand: PropTypes.string.isRequired,
+    colorway: PropTypes.string.isRequired,
+    hue: PropTypes.string
+  }))
+}
