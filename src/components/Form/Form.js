@@ -11,8 +11,6 @@ export class Form extends React.Component {
     this.state = {
       polishes: props.polishes,
       filtPolishes: [],
-      //brandOptions: [],
-      //colorOptions: [],
       brand: "",
       colorway: "",
       hue: "",
@@ -22,25 +20,6 @@ export class Form extends React.Component {
       submitReady: true
     }
   }
-
-  // buildColorOptions = () => {
-  //   const chosenBrand = this.state.brand
-  //   const foundBrand = this.state.polishes.find(polish => {
-  //     return polish.brand === chosenBrand
-  //   })
-  //   if (!foundBrand) {
-  //     return
-  //   } else {
-  //     const listOptions = foundBrand.colors.map(color => {
-  //       return (
-  //         <option key={color.hue} value={color.colorway}>
-  //           {color.colorway}
-  //         </option>
-  //       );
-  //     });
-  //     return listOptions
-  //   } 
-  // }
 
   filterByBrand = () => {
     const lowerCase = this.state.brand.toLowerCase()
@@ -57,14 +36,6 @@ export class Form extends React.Component {
     this.handleChange(event)
     this.filterByBrand()
   }
-
-  // handleColorwayChange = event => {
-  //   this.validateInputs()
-  //   this.handleChange(event)
-  //   //const colorOpts = this.buildColorOptions()
-  //   //this.setState({ colorOptions: colorOpts }, () => { this.changeButton("bgColorwayColor", "colorway")
-  // //});
-  // }
 
   changeButton = (buttonName, input) => {
     this.validateInputs()
@@ -147,8 +118,7 @@ export class Form extends React.Component {
               onChange={event => this.handleBrandChange(event)}
             />
             <datalist 
-              // id="colors">{this.state.colorOptions}
-              id="colors">{<Options polishes={this.state.polishes} brand={this.state.brand}/>}
+              id="colors">{<Options brand={this.state.brand} polishes={this.state.polishes}/>}
             </datalist>
             <div
               className="add-input" 
@@ -189,7 +159,6 @@ export class Form extends React.Component {
       </section>
     )
   }
-
 }
 
 Form.propTypes = {

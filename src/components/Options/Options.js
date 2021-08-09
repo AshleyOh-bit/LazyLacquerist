@@ -1,8 +1,8 @@
 import React from "react"
-import PropTypes from "prop-types"
+import PropTypes, { string } from "prop-types"
 
-export const Options = ({ filteredPolishes, brand, name, polishes }) => {
-  let listOptions, chosenBrand, foundBrand;
+export const Options = ({ filteredPolishes, brand, polishes }) => {
+  let listOptions, foundBrand;
   if (filteredPolishes) {
     listOptions = filteredPolishes.map(polish => {
       return (
@@ -11,14 +11,12 @@ export const Options = ({ filteredPolishes, brand, name, polishes }) => {
         </option>
       );
     });
-    return listOptions
   } else {
-    chosenBrand = brand
     foundBrand = polishes.find(polish => {
-      return polish.brand === chosenBrand
+      return polish.brand === brand
     })
     if (!foundBrand) {
-      return listOptions = <></>
+      listOptions = <></>
     } else {
       listOptions = foundBrand.colors.map(color => {
         return (
@@ -27,10 +25,25 @@ export const Options = ({ filteredPolishes, brand, name, polishes }) => {
           </option>
         );
       });
-      return listOptions
     } 
   }
   return (
     listOptions
   )
+}
+
+Options.propTypes = {
+  filteredPolishes: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+    brand: PropTypes.string.isRequired,
+    colors: PropTypes.array.isRequired,
+    hue: PropTypes.string
+  })),
+  polishes: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+    brand: PropTypes.string.isRequired,
+    colors: PropTypes.array.isRequired,
+    hue: PropTypes.string
+  })),
+  brand: string
 }
