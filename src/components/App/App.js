@@ -14,9 +14,6 @@ import { Route, Link, Redirect, Switch } from 'react-router-dom';
 
 import loading from "../../assets/loading.png"
 
-// import nails from "../../assets/mani-icon.png"
-// import CNDblackpool from "../../assets/CND-Blackpool.jpeg"
-
 class App extends React.Component {
   constructor() {
     super()
@@ -25,7 +22,6 @@ class App extends React.Component {
       collection: [],
       error: "", 
       isLoading: true,
-      // randomMani: []
     }
   }
 
@@ -89,29 +85,6 @@ class App extends React.Component {
      this.addToExistingBrandInCollection(newPolish, foundBrand)
   }
 
-  // generateMani = (event, num) => {
-  //   event.preventDefault()
-  //   console.log("here")
-  //   // if (!this.state.collection.length || num > this.state.collection.length) {
-  //   //   return "Please add more polishes to your stash!"
-  //   // } else {
-  //     const random = () => {
-  //       return Math.floor(Math.random() * this.state.collection.length)
-  //      }
-  //      const indeces = []
-  //      let number;
-  //      for (var i = 0; i < num; i++) {
-  //        number = random()
-  //        indeces.push(number)
-  //      }
-  //      const randomPols = indeces.reduce((acc, currentNum) => {
-  //        acc.push(this.state.collection[currentNum])
-  //        return acc
-  //      }, [])
-  //      return this.setState({ randomMani: randomPols })
-  //   //}
-  // }
-
   render() {
     return (
     <main>
@@ -148,12 +121,12 @@ class App extends React.Component {
         <Route
               exact
               path='/page-not-found'
-              render={() => <Error error={'page not found'} />}
+              render={() => <Error errorMessage={'page not found'} />}
         />
         <Route
               exact
               path='/add-a-polish/page-not-found'
-              render={() => <Error error={'page not found'} />}
+              render={() => <Error errorMessage={'page not found'} />}
         />
         <Redirect to="/page-not-found" />
       </Switch>

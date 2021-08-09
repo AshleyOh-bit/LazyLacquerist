@@ -1,5 +1,6 @@
 import React from "react"
 import "./ManiMaker.css"
+import PropTypes from "prop-types"
 
 export class ManiMaker extends React.Component {
   constructor(props) {
@@ -98,4 +99,13 @@ export class ManiMaker extends React.Component {
     </section>
     )
   }
+}
+
+ManiMaker.propTypes = {
+  collection: PropTypes.arrayOf(PropTypes.shape({
+    image: PropTypes.string,
+    brand: PropTypes.string.isRequired,
+    colorway: PropTypes.string.isRequired,
+    hue: PropTypes.string
+  })).isRequired,
 }
