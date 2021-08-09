@@ -6,7 +6,7 @@ export const Error = props => {
   return (
     <section className="errors">
       <h2>{props.error}</h2>
-      <img className="warning" src={warning}/>
+      <img className="warning" src={warning} alt="error!"/>
     </section>
   )
 }
