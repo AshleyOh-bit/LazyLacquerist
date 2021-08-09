@@ -16,8 +16,9 @@ describe("Sad path user flows", () => {
   })
 
   it("Should tell user to add polishes to their collection before using the mani maker", () => {
-    cy.loadMain()
-    cy.navToGen()
+    cy.visit('http://localhost:3000')
+    cy.get("[data-cy=maniMaker]")
+      .click()
     cy.get("h2")
       .contains("Please add polishes to your collection to use this feature!")
   })

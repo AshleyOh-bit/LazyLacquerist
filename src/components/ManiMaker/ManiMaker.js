@@ -53,7 +53,7 @@ export class ManiMaker extends React.Component {
   render() {
     return (
       <section className="mani-maker-section"> 
-      {!this.state.collection.length ? <h2>Please add polishes to your collection to use this feature!</h2>
+      {!this.state.collection.length ? <h2 className="greeting">Please add polishes to your collection to use this feature!</h2>
       :
       <>
       <section className="mm-instructions">
