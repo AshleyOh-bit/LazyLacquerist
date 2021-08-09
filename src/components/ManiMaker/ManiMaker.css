@@ -11,18 +11,23 @@
 
 .number-input {
   border: 2px solid #15a584;
-  width: 50%;
+  /* width: 85%; */
 }
 
 input[type="number"] {
   text-align: center;
 }
 
+.format-section {
+  width: 100vw;
+}
+
 .mani-color-section {
   background: white;
-  border-radius: 50%;
-  height: 50vh;
-  width: 70vw;
+  border-radius: 5%;
+  padding: 2em;
+  height: fit-content;
+  width: auto;
   margin-top: 2em;
   border: 2px solid #fba5a9;
   display: flex;
@@ -57,5 +62,27 @@ input[type="number"] {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 20vw;
+  margin-left: 10vw;
+}
+
+.mm-instructions {
+  margin: .5em;
+}
+
+@media screen and (max-width: 500px) {
+  .number-input {
+    margin-top: .25em;
+  }
+  .submit-generate, .mani-color-section {
+    margin-top: .75em;
+    margin-bottom: .75em;
+  }
+
+  .mani-color-section {
+    width: 60vw;
+  }
+  .splotch {
+    height: 10vh;
+    width: 15vw;
+  }
 }
