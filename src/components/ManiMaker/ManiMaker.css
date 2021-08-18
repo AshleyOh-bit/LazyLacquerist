@@ -52,10 +52,11 @@ input[type="number"] {
   display: flex;
   justify-content: center;
   justify-content: center;
+  margin: .25em;
 }
 
 .swatch-info {
-  text-transform: none;
+  text-transform: capitalize;
 }
 
 .splotch {
@@ -70,7 +71,7 @@ input[type="number"] {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 10vw;
+  margin-left: auto;
 }
 
 .mm-instructions {
