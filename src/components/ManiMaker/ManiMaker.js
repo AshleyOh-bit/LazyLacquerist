@@ -61,25 +61,25 @@ export class ManiMaker extends React.Component {
         <h3>Click the arrows to choose up to 10 colors from your collection!</h3>
       </section>
       <section className="generator">
-      <input
-        className="number-input"
-        type="number"
-        min={0}
-        max={(this.state.limit < 10) ? this.state.limit : 10}
-        placeholder="0"
-        value={this.state.numInput}
-        name="numInput"
-        onChange={event => this.handleChange(event)}
-      />
-      <button
-        data-cy="generate"
-        disabled={this.state.isValid}
-        className="submit-generate"
-        type="submit"
-        onClick={(event) => this.generateMani(event, this.state.numInput)}
-      >
-        generate!
-      </button>
+        <input
+          className="number-input"
+          type="number"
+          min={0}
+          max={(this.state.limit < 10) ? this.state.limit : 10}
+          placeholder="0"
+          value={this.state.numInput}
+          name="numInput"
+          onChange={event => this.handleChange(event)}
+        />
+        <button
+          data-cy="generate"
+          disabled={this.state.isValid}
+          className="submit-generate"
+          type="submit"
+          onClick={(event) => this.generateMani(event, this.state.numInput)}
+        >
+          generate!
+        </button>
       </section>
       <div className=".format-section">
         <section className="mani-color-section">
