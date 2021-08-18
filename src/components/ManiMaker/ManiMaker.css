@@ -11,7 +11,6 @@
 
 .number-input {
   border: 2px solid #15a584;
-  /* width: 85%; */
 }
 
 input[type="number"] {
@@ -26,6 +25,8 @@ input[type="number"] {
   background: white;
   border-radius: 5%;
   padding: 2em;
+  min-width: 30vh;
+  min-height: 30vh;
   height: fit-content;
   width: auto;
   margin-top: 2em;
@@ -40,14 +41,22 @@ input[type="number"] {
   background-color: gold;
 }
 
+.generator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .swatch {
   display: flex;
   justify-content: center;
   justify-content: center;
+  margin: .25em;
 }
 
 .swatch-info {
-  text-transform: none;
+  text-transform: capitalize;
 }
 
 .splotch {
@@ -62,7 +71,7 @@ input[type="number"] {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  margin-left: 10vw;
+  margin-left: auto;
 }
 
 .mm-instructions {
