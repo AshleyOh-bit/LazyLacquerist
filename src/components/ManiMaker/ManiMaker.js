@@ -43,7 +43,10 @@ export class ManiMaker extends React.Component {
         indeces.push(number)
       }
       const randomPols = indeces.reduce((acc, currentNum) => {
-        acc.push(this.state.collection[currentNum])
+        if(this.state.collection[currentNum].hue) {
+          acc.push(this.state.collection[currentNum])
+        }
+        //acc.push(this.state.collection[currentNum])
         return acc
       }, [])
       this.setState({ numInput: 0 })
