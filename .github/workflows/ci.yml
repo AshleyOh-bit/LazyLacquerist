@@ -17,6 +17,7 @@ jobs:
 
     steps:
       # build
+      - name: Build
       - uses: actions/checkout@v2
 
       # Run Cypress test suite
