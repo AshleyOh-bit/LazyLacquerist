@@ -15,10 +15,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
       # build
-      - name: Build
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
       # Run Cypress test suite
       - name: Run Cypress suite
@@ -28,8 +32,7 @@ jobs:
 
       # deploy to vercel
       - name: deploy website
-      - uses: actions/checkout@v2
-      - uses: ngduc/vercel-deploy-action@master
+        uses: ngduc/vercel-deploy-action@master
         with:
             vercel-cli: vercel # optional ("vercel" or "now")
             vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
