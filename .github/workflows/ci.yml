@@ -1,0 +1,43 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      # build
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Run Cypress test suite
+      - name: Run Cypress suite
+        uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+
+      # deploy to vercel
+      - name: deploy website
+        uses: ngduc/vercel-deploy-action@master
+        with:
+            vercel-cli: vercel # optional ("vercel" or "now")
+            vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+            github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
+            vercel-args: '--prod'
+            vercel-org-id: ${{ secrets.ORG_ID}}
+            vercel-project-id: ${{ secrets.PROJ_ID}}
+            working-directory: ./sub-directory
