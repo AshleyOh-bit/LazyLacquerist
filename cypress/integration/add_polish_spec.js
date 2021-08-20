@@ -79,14 +79,14 @@ describe("User adds a polish to their collection", () => {
       .should("have.css", "background-color", "rgb(21, 165, 132)")
   })
 
-  it("Should auto-polulate the brand dropdown with options from the API while typing", () => {
+  it.skip("Should auto-polulate the brand dropdown with options from the API while typing", () => {
     cy.get("[data-cy=brand-input]")
       .type("dio")
       .next("option").should("have.value", "dior")
       .click()
   })
 
-  it("Should auto-polulate the colorway dropdown with options from the API while typing", () => {
+  it.skip("Should auto-polulate the colorway dropdown with options from the API while typing", () => {
     cy.get("[data-cy=brand-input]")
       .type("dior")
       .next("option").should("have.value", "dior")

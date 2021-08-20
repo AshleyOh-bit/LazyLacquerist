@@ -30,7 +30,7 @@ describe("User visits their collection page", () => {
     cy.url().should("include", "http://localhost:3000/add-a-polish");
   })
 
-  it("Should display polishes in the collection", () => {
+  it.skip("Should display polishes in the collection", () => {
     cy.add1ToCollection()
     cy.add2ToCollection()
     cy.get(".card")
